@@ -1,6 +1,6 @@
 <template>
-<q-page>
-        <q-card class="my-card text-dark" bordered>
+<div>
+        <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb">
             <q-card-section>
                 <div class="text-h5 mt-5"><b>QR-Code Generator</b></div>
             </q-card-section>
@@ -16,7 +16,7 @@
             </div>
         </q-card>
 
-</q-page>
+    </div>
 </template>
 
 <script>

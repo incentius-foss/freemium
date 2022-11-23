@@ -1,6 +1,6 @@
 <template>
 <q-page>
-    <q-card class="q-pa-md my-card text-dark">
+    <q-card class="q-pa-md my-card text-dark" style="background-color:#f6f0eb">
         <q-card-section>
             <div class="text-h5 mt-5"><b>Text To PDF</b></div>
         </q-card-section>

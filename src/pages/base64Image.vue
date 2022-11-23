@@ -1,11 +1,12 @@
 <template>
     <q-page>
-        <q-card class="my-card text-dark" bordered>
+        <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb">
         <q-card-section>
             <div class="text-h5"><b>Image To Base64</b></div>
         </q-card-section>
         <q-card-section>
-            <q-input bordered multiple  type="file" style="width:100%" @change="encodeBase64()"></q-input>
+            <q-uploader accept=".xls,.xlsx" label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
+            <!-- <q-input bordered multiple  type="file" style="width:100%" @change="encodeBase64()"></q-input> -->
         </q-card-section>
         <div class="text-h5 ml-4"><b>Output : </b></div>
         <div class="q-pa-md" style="max-width: 100%">

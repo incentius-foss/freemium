@@ -1,6 +1,6 @@
 <template>
-<q-page>
-    <q-card class="my-card text-dark" bordered>
+<q-page class="">
+    <q-card class="my-card text-dark" style="background-color:#f6f0eb" bordered>
         <q-card-section>
             <div class="text-h5 mt-5"><b>JSON TO CSV</b></div>
         </q-card-section>

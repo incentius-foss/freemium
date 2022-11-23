@@ -9,7 +9,7 @@
       v-if="icon"
       avatar
     >
-      <q-icon :name="icon"/>
+      <q-icon  :name="icon"/>
     </q-item-section>
 
     <q-item-section>
@@ -81,7 +81,7 @@
       v-if="icon"
       avatar
     >
-      <q-icon name="code"/>
+      <q-icon  name="code"/>
     </q-item-section>
   <q-item-section>
        <q-item-label>Base64 Converter</q-item-label>
@@ -98,7 +98,7 @@
       v-if="icon"
       avatar
     >
-      <q-icon name="image"/>
+      <q-icon  name="image"/>
     </q-item-section>
   <q-item-section>
        <q-item-label>Base64 Image Converter</q-item-label>
@@ -117,7 +117,7 @@
       v-if="icon"
       avatar
     >
-      <q-icon name="link"/>
+      <q-icon  name="link"/>
     </q-item-section>
   <q-item-section>
        <q-item-label>URL Enode Decode</q-item-label>
