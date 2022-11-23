@@ -1,6 +1,6 @@
 <template>
     <q-page>
-        <q-card class="my-card text-dark" bordered>
+        <q-card class="my-card text-dark" style="background-color:#f6f0eb" bordered>
         <q-card-section>
             <div class="text-h5 bold"><b>SQL Formatter</b></div>
         </q-card-section>

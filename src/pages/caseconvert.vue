@@ -2,7 +2,7 @@
   <q-layout view="hHh Lpr lFf" v-cloak>
     <q-page-container>
       <q-page class="q-pa-md">
-        <q-card class="bg-grey-2" style="border: 2px solid">
+        <div class="bg-grey-2" >
           <q-card-section>
             <div class="q-gutter-sm">
               <q-btn
@@ -164,7 +164,7 @@
               >
             </div>
           </q-card-section>
-        </q-card>
+        </div>
       </q-page>
     </q-page-container>
   </q-layout>

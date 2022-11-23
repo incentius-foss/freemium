@@ -1,6 +1,6 @@
 <template>
      <q-page>
-        <q-card class="my-card text-dark" bordered>
+        <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb">
         <q-card-section>
             <div class="text-h5"><b>Encode URL</b></div>
         </q-card-section>
