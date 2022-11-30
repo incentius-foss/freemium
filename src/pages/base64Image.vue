@@ -1,20 +1,28 @@
 <template>
     <q-page>
-        <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb">
-        <q-card-section>
-            <div class="text-h5"><b>Image To Base64</b></div>
-        </q-card-section>
-        <q-card-section>
-            <q-uploader accept=".xls,.xlsx" label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
-            <!-- <q-input bordered multiple  type="file" style="width:100%" @change="encodeBase64()"></q-input> -->
-        </q-card-section>
-        <div class="text-h5 ml-4"><b>Output : </b></div>
-        <div class="q-pa-md" style="max-width: 100%">
-            <q-input v-model="encodingOutput" filled placeholder="Encoded String" ref="textarea"
-                rows="40"
-                type="textarea" />
+        <div class="full-width flex row wrap justify-around items-start content-end" >
+            <div class="text-center q-my-md">
+                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Image To Base64</span>
+                </div>
         </div>
-    </q-card>
+            <div>
+                    <!-- <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb"> -->
+                    <q-card-section class="q-pb-none">
+                        <div class="ml-1"><b>Upload Image</b></div>
+                    </q-card-section>
+                    <q-card-section class="q-my-none">
+                        <q-uploader  label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
+
+                    </q-card-section>
+                    <div class=" ml-5"><b>Output : </b></div>
+                    <div class="q-pa-md" style="max-width: 100%">
+                        <q-input v-model="encodingOutput" class="bg-white pl-5" placeholder="Encoded String" ref="textarea"
+                            rows="19"
+                            type="textarea" />
+                    </div>
+                   <!-- </q-card> -->
+            </div>
+        
     </q-page>
 </template>
 <script>
@@ -33,7 +41,7 @@ export default {
     },
     methods:{
         encodeBase64(event) {
-            const file = document.querySelector('input[type=file]').files[0]
+            const file = event[0]
             const reader = new FileReader()
 
             let rawImg;

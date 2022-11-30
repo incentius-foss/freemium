@@ -1,21 +1,52 @@
 <template>
 <q-page>
+        <div class="full-width flex row wrap justify-around items-start content-end" >
+            <div class="text-center q-my-md">
+                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Excel To JSON</span>
+                </div>
+        </div>
+            <div>
+
+                    <q-card-section class="q-pb-none">
+                        <div class="ml-1"><b>Upload Excel flie</b></div>
+                    </q-card-section>
+                    <q-card-section class="q-my-none">
+                        <q-uploader  label="Upload Excel file" accept=".xls,.xlsx" type="file" flat color="teal" bordered multiple  style="width:100%" @added="upload"/>
+
+                    </q-card-section>
+                    <div class=" ml-5"><b>Output : </b></div>
+                    <div class="q-pa-md" style="max-width: 100%">
+                        <textarea id="json-result"  placeholder="JSON Data" ref="textarea"
+                rows="14"
+                
+                 />
+                    </div>
+         
+            </div>
+        
+    </q-page>
+<!-- <q-page>
+  <div class="full-width flex row wrap justify-around items-start content-end" >
+            <div class="text-center q-my-md">
+                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Excel To JSON</span>
+                </div>
+        </div>
         <q-card class="my-card text-dark" bordered style="background-color:#f6f0eb">
         <q-card-section>
-            <div class="text-h5"><b>Excel File To JSON Data</b></div>
+            <div class=""><b>Excel File To JSON Data</b></div>
         </q-card-section>
         <q-card-section>
             <q-uploader accept=".xls,.xlsx" label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="upload"/>
         </q-card-section>
-        <div class="text-h5 ml-4"><b>Output : </b></div>
+        <div class=" ml-4"><b>Output : </b></div>
         <div class="q-pa-md" style="max-width: 100%">
-            <textarea id="json-result" filled placeholder="JSON Data" ref="textarea"
-                rows="38"
-                cols="100"
+            <textarea id="json-result"  placeholder="JSON Data" ref="textarea"
+                rows="13"
+                
                  />
         </div>
     </q-card>
-    </q-page>
+    </q-page> -->
     	<!-- <input type="file" id="file_upload" @change="upload" />
         <q-input type="textarea" v-model="formated_data" /> -->
 </template>
@@ -89,12 +120,8 @@ export default {
 <style>
 textarea{
   width: 100%;
-  height: 750px;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
   font-size: 16px;
   resize: none;
 }
