@@ -4,12 +4,13 @@
     tag="a"
     target="_blank"
      @click="$router.push('/')"
+     class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
       avatar
     >
-      <q-icon  :name="icon"/>
+      <q-icon :name="icon"/>
     </q-item-section>
 
     <q-item-section>
@@ -23,6 +24,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/jsonformatter')"
+    class="text-gray-800 active:bg-red-700 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -31,7 +33,7 @@
       <q-icon name="data_object"/>
     </q-item-section>
   <q-item-section>
-       <q-item-label>JSON Formatter</q-item-label>
+       JSON Formatter
     </q-item-section>
   </q-item>
 
@@ -41,6 +43,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/jsoncsv')"
+    class="text-gray-800  hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -59,6 +62,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/sqlformatter')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white  flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -76,6 +80,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/base64')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -93,6 +98,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/base64Image')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -112,6 +118,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/urlencodedecode')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -130,6 +137,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/exceltojson')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -166,6 +174,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/qrcode')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -184,6 +193,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/texttopdf')"
+    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
   >
     <q-item-section
       v-if="icon"
@@ -200,6 +210,8 @@
 
 <script>
 import {defineComponent} from 'vue'
+import { ref } from 'vue'
+
 
 export default defineComponent({
   name: 'EssentialLink',
@@ -216,7 +228,7 @@ export default defineComponent({
 
     link: {
       type: String,
-      default: '#'
+      default: ref('/')
     },
 
     icon: {
@@ -226,3 +238,9 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped>
+.activeclass{
+  background-color: #6a7dff;
+  
+}
+</style>
