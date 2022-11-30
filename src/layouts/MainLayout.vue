@@ -9,7 +9,172 @@
     <!--        <div>Quasar v{{ $q.version }}</div>-->
     <!--      </q-toolbar>-->
     <!--    </q-header>-->
-      <q-drawer
+    <q-drawer v-if="collapse"
+    :width='60'
+        v-model="leftDrawerOpen"
+        show-if-above
+        bordered
+        class="flex flex-col bg-brown-1"
+      >
+      <div>
+                <div :key="index" v-for="(test,index) in essentialLinks">
+                  <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon  name="home"/>
+                        </q-item-section>
+
+                        
+                      </q-item>
+
+                    <!-- For Json formatter -->
+                    <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/jsonformatter')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="data_object"/>
+                        </q-item-section>
+                      
+                      </q-item>
+
+                      <!-- For JSON To CSV-->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/jsoncsv')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="description"/>
+                        </q-item-section>
+                      </q-item>
+
+                      <!-- For SQL formatter -->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/sqlformatter')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="article"/>
+                        </q-item-section>
+                      </q-item>
+                      <!-- For Base 64 -->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/base64')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon  name="code"/>
+                        </q-item-section>
+                      </q-item>
+                    <!-- For Json Formatter -->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/base64Image')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon  name="image"/>
+                        </q-item-section>
+                      </q-item>
+
+
+                      <!-- For SQL formatter -->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/urlencodedecode')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon  name="link"/>
+                        </q-item-section>
+                      </q-item>
+
+                    <!-- For PDF Generator-->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/exceltojson')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="source"/>
+                        </q-item-section>
+                      </q-item>
+
+                      <!-- For QR-Code Generator-->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/qrcode')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="qr_code_scanner"/>
+                        </q-item-section>
+                      </q-item>
+
+                    <!-- For PDF Generator-->
+                      <q-item
+                        clickable
+                        tag="a"
+                        target="_blank"
+                        @click="$router.push('/texttopdf')"
+                      >
+                        <q-item-section
+                          v-if="test.icon"
+                          avatar
+                        >
+                          <q-icon name="picture_as_pdf"/>
+                        </q-item-section>
+                      </q-item>
+                  </div>
+                  <div  v-if="!$q.screen.lt.sm" class="mt-10">
+                    <q-btn icon="reorder" flat @click="collapse=!collapse;"><q-tooltip size="10px">Open the sidebar</q-tooltip></q-btn>
+                  </div>
+              </div>
+    </q-drawer>
+      <q-drawer v-else
         v-model="leftDrawerOpen"
         show-if-above
         bordered
@@ -21,14 +186,17 @@
             <div class="">
               <img class="q-mx-auto " src="../assets/Logo.png" style="width:50%"></div>
             <q-separator></q-separator>
+          
+              
 
-            <EssentialLink
+          
+            <EssentialLink  
               v-for="link in essentialLinks"
               :key="link.title"
               v-bind="link"
             />
 
-            <div class="absolute-bottom">
+            <div class="absolute-bottom" v-if="!collapse">
               <q-separator></q-separator>
               <q-item>
                 <q-item-section avatar>
@@ -48,6 +216,9 @@
             </div>
           </div>
         </q-list>
+        <div  v-if="!$q.screen.lt.sm" class="mt-2 flex items-center justify-center">
+          <q-btn icon="reorder" flat @click="collapse=!collapse;" ><q-tooltip>Close the sidebar</q-tooltip></q-btn>
+          </div>
         <!-- width:100%;height:auto;color: #f6f0eb00; -->
       </q-drawer>
       <q-page-container class="backgroundcolor" >
@@ -59,6 +230,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+// import Sidebarcollapse from 'components/Sidebarcollapse.vue'
 
 const linksList = [
   {
@@ -73,13 +245,15 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
+    
   },
 
   setup() {
     const leftDrawerOpen = ref(false)
 
     return {
+      collapse: ref(false),
       essentialLinks: linksList
     }
   }
@@ -91,5 +265,7 @@ export default defineComponent({
 		background-color: #f6f0eb;
     
   }
-
+.q-item{
+  padding:0px,0px;
+}
 </style>
