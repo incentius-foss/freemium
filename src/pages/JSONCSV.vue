@@ -1,20 +1,48 @@
 <template>
-<q-page class="">
-    <q-card class="my-card text-dark" style="background-color:#f6f0eb" bordered>
-        <q-card-section>
-            <div class="text-h5 mt-5"><b>JSON TO CSV</b></div>
-        </q-card-section>
-        <q-card-section>
-            <q-input type="textarea" filled v-model="csvjson" rows="20" placeholder="Enter JSON Data" />
-            <q-btn class="mt-5 " @click="showOutput" color="black" label="Convert" />
-            <q-btn class="mt-5 ml-5" @click="downloadCSV" color="black" label="DownloadCSV" />
-        </q-card-section>
+<q-page>
+        
+        <div class="full-width flex row wrap justify-around items-start content-end" >
+			<div class="text-center q-my-md">
+             <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >JSON to CSV</span>
+            </div>
+			<div class="full-width flex justify-between row wrap justify-around items-start content-end">
+				<div class="col-5" style="overflow:auto">
+                <!-- <q-card bordered class="my-card" > -->
+                    <q-card-section class="q-pa-none q-ma-none">
+                        <div class=" text-center"><b>Input</b></div>
+                        <div class="text-subtitle2"></div>
+                    </q-card-section>
 
-        <div class="q-pa-md" style="max-width: 100%">
-            <q-input v-model="csvData" filled rows="20" placeholder="Encoded String" type="textarea" />
+                    <q-card-actions vertical align="center">
+                        <q-input  class="full-width form-control bg-white pl-5" v-model="csvjson" placeholder="Enter JSON Data"  ref="textarea"
+                        rows="27"
+                        type="textarea" />
+                    </q-card-actions>
+                <!-- </q-card> -->
+            </div>
+            <q-separator class="q-pa-none q-ma-none"  vertical></q-separator>
+            <div class="col-6" style="overflow:auto ">
+                <!-- <q-card bordered class="my-card" > -->
+                    <q-card-section class="q-pa-none q-ma-none">
+                        <div class=" text-center"><b>Output</b></div>
+                        <div class="text-subtitle2"></div>
+                    </q-card-section>
+
+                    <q-card-actions vertical align="center" >
+                        <q-input class="full-width bg-white pl-5"  v-model="csvData"  placeholder="Encoded String" ref="textarea"
+                        rows="27"
+                        type="textarea" />
+                    </q-card-actions>
+                <!-- </q-card> -->
+            </div>
+
+			</div>
+            
         </div>
-    </q-card>
-</q-page>
+		<q-btn color="black" class="float-right mt-5 mr-8" label="Convert" @click="showOutput()" />
+        <q-btn color="black" class="float-right mt-5 mr-5" label="DownloadCSV" @click="downloadCSV()" />
+   </q-page>
+
 </template>
 
 <script>

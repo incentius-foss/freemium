@@ -2,40 +2,45 @@
   <q-layout view="hHh Lpr lFf" v-cloak>
     <q-page-container>
       <q-page class="q-pa-md">
-        <div class="bg-grey-2" >
+        <div class="full-width flex row wrap justify-around items-start content-end" >
+            <div class="text-center ">
+                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Convert text style</span>
+                </div>
+        </div>
+        <div class=" q-mt-sm" >
           <q-card-section>
             <div class="q-gutter-sm">
               <q-btn
-                color="primary"
+                color="white"
+                class="text-black"
                 no-caps
-                outline
                 dense
                 padding="7px"
                 @click="wideChar"
                 >Wide Text Generator</q-btn
               >
               <q-btn
-                color="primary"
+                color="white"
+                class="text-black"
                 no-caps
-                outline
                 dense
                 padding="7px"
                 @click="strikeText"
                 >Strike Through Text Generator</q-btn
               >
               <q-btn
-                color="primary"
+                color="white"
+                class="text-black"
                 no-caps
-                outline
                 dense
                 padding="7px"
                 @click="reverseText"
                 >Reverse Text Generator</q-btn
               >
               <q-btn
-                color="primary"
+                color="white"
+                class="text-black"
                 no-caps
-                outline
                 dense
                 padding="7px"
                 @click=" binaryText"
@@ -45,18 +50,19 @@
           </q-card-section>
           <q-card-section style="margin-top: -20px">
             <textarea
-              class="textarea"
+            rows="8"
+              class="textarea pl-4 pt-4"
               v-model="text"
               id="text"
-              style="border: 1px solid"
               placeholder="Enter Your text here!!"
             ></textarea>
           </q-card-section>
           <q-card-section style="margin-top: -20px">
             <div class="q-gutter-sm">
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -64,8 +70,9 @@
                 >Sentence case</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black "
                 no-caps
                 dense
                 padding="7px"
@@ -73,8 +80,9 @@
                 >lower case</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -83,8 +91,9 @@
                 UPPER CASE</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -92,8 +101,9 @@
                 >Capitelized case</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -101,8 +111,9 @@
                 >aLtErNaTiNg cAsE</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -110,8 +121,9 @@
                 >Title Case</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -120,8 +132,9 @@
               >
 
               <q-btn
-                color="primary"
-                outline
+                size="sm"
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -135,18 +148,18 @@
               <p style="margin-top: 1em">&nbsp; | Line Count:{{ line }}</p>
             </div>
           </q-card-section>
-          <q-card-section>
+          <q-card-section class="q-pt-none">
             <h6 class="text-h6">Result:</h6>
             <textarea
+            class="pl-4 pt-4"
+            rows="7"
               id="result"
-              style="border: 1px solid"
               placeholder="Result here!!"
             ></textarea>
             <div class="q-gutter-sm" style="margin-top:5px">
               <q-btn
-                class="q-mt-sm"
-                color="primary"
-                outline
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -154,8 +167,8 @@
                 >Copy to clipboard</q-btn
               >
               <q-btn
-                color="primary"
-                outline
+                color="white"
+                class="text-black"
                 no-caps
                 dense
                 padding="7px"
@@ -322,11 +335,13 @@ export default defineComponent({
 <style scoped>
 .textarea {
   width: 950px;
-  height: 150px;
+
 }
 
 textarea {
   width: 950px;
-  height: 125px;
+
+}
+.q-btn{font-size: 12px !important; padding: 3px !important;
 }
 </style>
