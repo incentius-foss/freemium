@@ -9,8 +9,32 @@
 				<div class="col-5" style="overflow:auto">
                 <!-- <q-card bordered class="my-card" > -->
                     <q-card-section class="q-pa-none q-ma-none">
-                        <div class=" text-center"><b>JSON Data</b></div>
-                        <div class="text-subtitle2"></div>
+                        <div class="ml-2 row">
+                            <div class="col-4 text-left">
+                                <b>JSON Data :</b></div>
+                            <div class="col-8 text-right">
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none text-black mr-2 rounded-md"
+                                    no-caps
+                                    dense
+                                    @click="sample()"
+                                    >Sample</q-btn
+                                >
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none mr-2 text-black rounded-md"
+                                    no-caps
+                                    dense
+                                    @click="clear()"
+                                    >Clear</q-btn
+                                >
+                                </div>
+                                
+                                <!-- <div class="text-subtitle2"></div> -->
+                            </div>
                     </q-card-section>
 
                     <q-card-actions vertical align="center">
@@ -24,8 +48,22 @@
             <div class="col-6" style="overflow:auto ">
                 <!-- <q-card bordered class="my-card" > -->
                     <q-card-section class="q-pa-none q-ma-none">
-                        <div class=" text-center"><b>Formated Data</b></div>
-                        <div class="text-subtitle2"></div>
+                        <div class="ml-2 row">
+                            <div class="col-8"><b>Formated Data :</b></div>
+                            <div class="col-4 text-right">
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none text-black mr-2 rounded-md"
+                                    no-caps
+                                    dense
+                                   @click="copyToClipboards()"
+                                    >Clipboard</q-btn
+                                >
+                            </div>
+                            
+                            <!-- <div class="text-subtitle2"></div> -->
+                        </div>
                     </q-card-section>
 
                     <q-card-actions vertical align="center" >
@@ -46,17 +84,40 @@
 </template>
 
 <script>
+import { copyToClipboard } from 'quasar'
+
 export default {
     name:'JsonFormatter',
     data(){
         return{
             json_data:[],
             formated_data:[],
-            loremIpsum : ""
+            loremIpsum : "",
         }
     },
     
     methods:{
+        copyToClipboards(){
+            copyToClipboard(this.formated_data)
+            .then(() => {
+                    this.$q.notify({
+                  message: 'Your text copied successfully',
+                  type: 'warning',
+                  color: 'positive',
+                  textColor: 'black',
+                  icon: 'thumb_up_alt'
+              });
+            })
+            .catch(() => {
+                
+            })
+        }
+        ,
+        clear(){
+            this.json_data=''
+        },
+        sample(){this.json_data='{"sample_data": "sample_data", "data": "data", "name": "json"}'
+        },
         jsonFormatter(){
             this.formated_data = JSON.stringify(JSON.parse(this.json_data),undefined,'\t')
             console.log("ddtffdd",this.formated_data)

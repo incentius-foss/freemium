@@ -14,7 +14,15 @@
                         <q-uploader  label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
 
                     </q-card-section>
-                    <div class=" ml-5"><b>Output : </b></div>
+                    <div class=" ml-5"><b>Output : </b>
+                    <q-btn
+                            size="sm"
+                            color="white"
+                            class="px-3 q-pa-none text-black mr-5 rounded-sm float-right"
+                            no-caps
+                            dense
+                            @click="copyToClipboards()"
+                        >Copy</q-btn></div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <q-input v-model="encodingOutput" class="bg-white pl-5" placeholder="Encoded String" ref="textarea"
                             rows="19"
@@ -26,6 +34,7 @@
     </q-page>
 </template>
 <script>
+import { copyToClipboard } from 'quasar'
 export default {
     name:"base64Image",
      data() {
@@ -40,6 +49,21 @@ export default {
         this.resize
     },
     methods:{
+        copyToClipboards(){
+            copyToClipboard(this.encodingOutput)
+            .then(() => {
+                    this.$q.notify({
+                  message: 'Your text copied successfully',
+                  type: 'warning',
+                  color: 'positive',
+                  textColor: 'black',
+                  icon: 'thumb_up_alt'
+              });
+            })
+            .catch(() => {
+                
+            })
+        },
         encodeBase64(event) {
             const file = event[0]
             const reader = new FileReader()

@@ -12,7 +12,7 @@
             <div class="q-gutter-sm">
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -21,7 +21,7 @@
               >
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -30,7 +30,7 @@
               >
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -39,7 +39,7 @@
               >
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -62,7 +62,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -72,7 +72,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black "
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -82,7 +82,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -93,7 +93,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -103,7 +103,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -113,7 +113,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -123,7 +123,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -134,7 +134,7 @@
               <q-btn
                 size="sm"
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -342,6 +342,6 @@ textarea {
   width: 950px;
 
 }
-.q-btn{font-size: 12px !important; padding: 3px !important;
+.q-btn{font-size: 12px !important; padding: 5px !important;
 }
 </style>
