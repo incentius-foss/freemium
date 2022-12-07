@@ -4,7 +4,7 @@
     tag="a"
     target="_blank"
      @click="$router.push('/')"
-     class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+     :class="$route.path=='/' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -24,7 +24,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/jsonformatter')"
-    class="text-gray-800 active:bg-red-700 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/jsonformatter' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -43,7 +43,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/jsoncsv')"
-    class="text-gray-800  hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/jsoncsv' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -62,7 +62,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/sqlformatter')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white  flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/sqlformatter' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -80,7 +80,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/base64')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/base64' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -98,7 +98,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/base64Image')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/base64Image' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -118,7 +118,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/urlencodedecode')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/urlencodedecode' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -137,7 +137,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/exceltojson')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/exceltojson' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -174,7 +174,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/qrcode')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/qrcode' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"
@@ -193,7 +193,7 @@
     tag="a"
     target="_blank"
     @click="$router.push('/texttopdf')"
-    class="text-gray-800 hover:bg-blue-600 hover:text-white flex items-center flat dense font-medium rounded-xl"
+    :class="$route.path=='/texttopdf' ? 'bg-blue-500 rounded-xl text-white' : 'hover:bg-blue-500 rounded-xl hover:text-white'"
   >
     <q-item-section
       v-if="icon"

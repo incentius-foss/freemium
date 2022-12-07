@@ -1,12 +1,37 @@
 <template>
     <q-page>
+
         <div class="full-width flex row wrap justify-around items-start content-end" >
+            <div class="text-center q-my-md">
+                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Text To PDF</span>
+                </div>
+        </div>
+        <div>
+            <q-card-section class="q-py-none">
+                <div class=""><b>File Name</b></div>
+            </q-card-section>
+            <q-card-section>
+                <q-input class=" pl-3 bg-white"  v-model="yourname" placeholder="Enter name for your PDF" />
+                
+                
+            </q-card-section>
+            <div class="ml-4"><b>Output : </b>
+            </div>
+                    <div class="q-pa-md" style="max-width: 100%">
+                        <q-input v-model="fileContent" class="bg-white pl-5" placeholder="Enter PDF Data" ref="textarea"
+                            rows="20"
+                            type="textarea" />
+                    </div>
+                    <q-btn class="mt-3 mr-4 float-right" @click="downloadPDF" color="black" label="Download PDF" />
+            
+        </div>
+        <!-- <div class="full-width flex row wrap justify-around items-start content-end" >
             <div class="flex flex-center">
                 <span class="rounded bg-grey-4 q-mt-sm py-1 px-20 font-normal" >Text To PDF</span>
             </div>
             <div class="full-width flex justify-between row wrap justify-around items-start content-end">
                 <div class="col-5" style="overflow:auto">
-                <!-- <q-card bordered class="my-card" > -->
+                
                     <q-card-section class="q-pa-none q-ma-none">
                         <div class=" text-center"><b>Input</b></div>
                         <div class="text-subtitle2"></div>
@@ -14,15 +39,13 @@
 
                     <q-card-actions vertical align="center">
                         <q-input class="full-width rounded shadow-2 form-control bg-white pl-6"  ref="textarea" rows="27" type="textarea" v-model="yourname" placeholder="Enter name for your PDF" />
-                        <!-- <q-input class="full-width form-control bg-white" v-model="sql_data" placeholder="  Enter JSON Data"  ref="textarea"
-                        rows="27"
-                        type="textarea" /> -->
+                       
                     </q-card-actions>
-                <!-- </q-card> -->
+                
             </div>
             <q-separator class="q-pa-none q-ma-none"  vertical></q-separator>
             <div class="col-6" style="overflow:auto ">
-                <!-- <q-card bordered class="my-card" > -->
+               
                     <q-card-section class="q-pa-none q-ma-none">
                         <div class=" text-center"><b>Output</b></div>
                         <div class="text-subtitle2"></div>
@@ -32,28 +55,15 @@
                         <q-input class="full-width rounded shadow-2 form-control bg-white pl-6" ref="textarea" rows="27" type="textarea" v-model="fileContent" placeholder="Enter PDF Data" style="white-space: normal;" />
                         <q-btn class=" mt-5 ml-5" @click="downloadPDF" color="black" label="Download PDF" />
 
-                        <!-- <q-input class="full-width bg-white "  v-model="formated_data"  placeholder="  Encoded String" ref="textarea"
-                        rows="27"
-                        type="textarea" /> -->
+                        
                     </q-card-actions>
-                <!-- </q-card> -->
+                
             </div>
 
             </div>
                 
-                    <!-- <q-btn color="black" class="justify-center mt-5" label="Format" @click="jsonFormatter()" /> -->
-            </div>
-        <!-- <q-card class="q-pa-md my-card text-dark" style="background-color:#f6f0eb">
-            <q-card-section>
-                <div class="text-h5 mt-5"><b>Text To PDF</b></div>
-            </q-card-section>
-            <q-card-section>
-                <q-input class="mb-5" filled v-model="yourname" placeholder="Enter name for your PDF" />
-                <q-input type="textarea" rows="22" filled v-model="fileContent" placeholder="Enter PDF Data" style="white-space: normal;" />
-                <q-btn class="mt-5 ml-5" @click="downloadPDF" color="black" label="Download PDF" />
-            </q-card-section>
-
-        </q-card> -->
+            </div> -->
+        
     </q-page>
 </template>
 

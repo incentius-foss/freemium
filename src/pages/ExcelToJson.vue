@@ -14,7 +14,16 @@
                         <q-uploader  label="Upload Excel file" accept=".xls,.xlsx" type="file" flat color="teal" bordered multiple  style="width:100%" @added="upload"/>
 
                     </q-card-section>
-                    <div class=" ml-5"><b>Output : </b></div>
+                    <div class=" ml-5"><b>Output : </b>
+                    <q-btn
+                            size="sm"
+                            color="white"
+                            class="px-3 q-pa-none text-black mr-5 rounded-sm float-right"
+                            no-caps
+                            dense
+                            @click="copyToClipboards()"
+                        >Copy</q-btn>
+                    </div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <textarea id="json-result"  placeholder="JSON Data" ref="textarea"
                 rows="14"
@@ -52,13 +61,15 @@
 </template>
 
 <script>
+import { copyToClipboard } from 'quasar'
 // import XLS  from "xlsx";
 export default {
     data(){
         return{
                 attachment:[],
                 jsonData:[],
-                formated_data:[],
+                formated_data:'"territory_id": "101100","territory_name": "Res",',
+                test:''
         }
     },
 
@@ -68,6 +79,7 @@ export default {
     //     console.log("attachment",this.attachment)
     //     this.check_if_document_upload=true;
     //   },
+   
      upload(file) {
         console.log("@@@",file)
         var files = file
@@ -107,13 +119,33 @@ export default {
             //displaying the json result
              var resultEle=document.getElementById("json-result");
             resultEle.value=JSON.stringify(result, null, 4);
+            this.formated_data=resultEle.value
+            // this.test=JSON.parse(JSON.stringify(resultEle.value))
+            console.log("test..",this.formated_data,this.test)
             resultEle.style.display='block';
           }
         }
         catch(e){
           console.error(e);
         }
-        }
+        },
+         copyToClipboards(){
+      console.log("test123",this.test)
+            copyToClipboard('dsadadfsfd')
+            // console.log("test123",this.formated_data)
+            .then(() => {
+                    this.$q.notify({
+                  message: 'Your text copied successfully',
+                  type: 'warning',
+                  color: 'positive',
+                  textColor: 'black',
+                  icon: 'thumb_up_alt'
+              });
+            })
+            .catch(() => {
+                
+            })
+        },
     }
 }
 </script>
