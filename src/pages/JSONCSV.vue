@@ -76,7 +76,7 @@
             
         </div>
 		<q-btn color="black" class="float-right mt-5 mr-8" label="Convert" @click="showOutput()" />
-        <q-btn color="black" class="float-right mt-5 mr-5" label="DownloadCSV" @click="downloadCSV()" />
+        <q-btn color="black" class="float-right mt-5 mr-5" label="Download CSV" @click="downloadCSV()" />
    </q-page>
 
 </template>
