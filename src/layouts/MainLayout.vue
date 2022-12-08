@@ -308,9 +308,9 @@ export default defineComponent({
     }
   },
   methods: {
-      getSearchData(){
-        return this.essentialLinks.filter(item => (item.title.includes(this.search) ))
-    },
+    //   getSearchData(){
+    //     return this.essentialLinks.filter(item => (item.title.includes(this.search) ))
+    // },
     }
 })
 </script>
