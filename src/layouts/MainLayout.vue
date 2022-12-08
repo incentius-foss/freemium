@@ -191,7 +191,7 @@
                 <q-separator ></q-separator>
                 <!-- <div class="row">
                   <div class="col-9 my-2 ml-2">
-                    <q-input   class="rounded-md" style="bg-black" v-model="search" @click="getSearchData()"   dense outlined
+                    <q-input   class="rounded-md" style="bg-black" v-model="search"   dense outlined
                     :after="[{icon: 'search', handler () {}}]"
                     :placeholder="$t('search')">
                       <template v-slot:append>
@@ -308,9 +308,6 @@ export default defineComponent({
     }
   },
   methods: {
-    //   getSearchData(){
-    //     return this.essentialLinks.filter(item => (item.title.includes(this.search) ))
-    // },
     }
 })
 </script>
