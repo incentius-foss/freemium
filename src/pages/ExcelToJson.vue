@@ -21,7 +21,7 @@
                             class="px-3 q-pa-none text-black mr-5 rounded-sm float-right"
                             no-caps
                             dense
-                            @click="copyToClipboards()"
+                            @click="copyText()"
                         >Copy</q-btn>
                     </div>
                     <div class="q-pa-md" style="max-width: 100%">
@@ -129,23 +129,20 @@ export default {
           console.error(e);
         }
         },
-         copyToClipboards(){
-      console.log("test123",this.test)
-            copyToClipboard('dsadadfsfd')
-            // console.log("test123",this.formated_data)
-            .then(() => {
-                    this.$q.notify({
-                  message: 'Your text copied successfully',
-                  type: 'warning',
-                  color: 'positive',
-                  textColor: 'black',
-                  icon: 'thumb_up_alt'
-              });
-            })
-            .catch(() => {
-                
-            })
-        },
+        copyText() {
+          var data = document.getElementById("json-result");
+          data.select();
+          data.setSelectionRange(0, 99999);
+          navigator.clipboard.writeText(data.value);
+          this.$q.notify({
+                      message: 'Your text copied successfully',
+                      type: 'warning',
+                      color: 'positive',
+                      textColor: 'black',
+                      icon: 'thumb_up_alt'
+                  });
+          },
+         
     }
 }
 </script>

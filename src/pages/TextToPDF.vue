@@ -8,7 +8,7 @@
         </div>
         <div>
             <q-card-section class="q-py-none">
-                <div class=""><b>File Name</b></div>
+                <div class=""><b>File Name :</b></div>
             </q-card-section>
             <q-card-section>
                 <q-input class=" pl-3 bg-white"  v-model="yourname" placeholder="Enter name for your PDF" />
@@ -16,6 +16,12 @@
                 
             </q-card-section>
             <div class="ml-4"><b>Output : </b>
+             <q-btn
+                size="sm"
+                color="white"
+                class="px-3 q-pa-none float-right mr-4 text-black rounded-sm"
+                no-caps dense
+                @click="clear()">Clear</q-btn>
             </div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <q-input v-model="fileContent" class="bg-white pl-5" placeholder="Enter PDF Data" ref="textarea"
@@ -76,6 +82,9 @@ export default {
         }
     },
     methods: {
+        clear(){
+            this.fileContent=''
+        },
         downloadPDF() {
             // margin lines: A4 = inch W: 8.25 / H:11.75; 11.75 -0.5; = 11.25
             var doc = new jsPDF('p', 'in', 'a4')
