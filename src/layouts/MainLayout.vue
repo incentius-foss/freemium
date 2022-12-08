@@ -186,7 +186,7 @@
         <q-list >
           <div class="overflow-hidden mx-3">
               <div class="row">
-                <img class="q-mx-auto my-2" src="../assets/freemium.png" style="">
+                <img class="q-mx-auto my-2" src="../assets/freemium.png" style="width: 70%;">
               </div>
                 <q-separator ></q-separator>
                 <!-- <div class="row">
