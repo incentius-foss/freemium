@@ -218,14 +218,14 @@
           
               
 
-          
-                <EssentialLink  class="mt-2"
+              <div class="mt-2">
+                <EssentialLink  
                   v-for="link in essentialLinks"
                   :key="link.title"
                   v-bind="link"
                   :class="[link ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']"
                 />
-
+              </div>
                 <!-- <div class="absolute-bottom" v-if="!collapse">
                   <q-separator></q-separator>
                   <q-item>
@@ -244,7 +244,7 @@
                     </q-item-section>
                   </q-item>
                 </div> -->
-                <q-item class="mt-14"
+                <q-item class="mt-12"
                     clickable
                     @click="collapse=!collapse;"
                   >
