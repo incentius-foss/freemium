@@ -159,7 +159,7 @@
             <div class="q-gutter-sm" style="margin-top:5px">
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -168,7 +168,7 @@
               >
               <q-btn
                 color="white"
-                class="text-black"
+                class="text-black rounded-md"
                 no-caps
                 dense
                 padding="7px"
@@ -287,6 +287,13 @@ export default defineComponent({
       data.select();
       data.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(data.value);
+      this.$q.notify({
+                      message: 'Your text copied successfully',
+                      type: 'warning',
+                      color: 'positive',
+                      textColor: 'black',
+                      icon: 'thumb_up_alt'
+                  });
     },
     wideChar() {
       var data = document.getElementById("text").value;
