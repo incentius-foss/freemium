@@ -207,7 +207,7 @@
                       <template v-slot:append>
                         <q-icon color="gray-600" name="search"/>
                       </template>
-                    </q-input>{{search_data}}
+                    </q-input>
                   </div>
                   <div class="col-2 mt-4 ml-2">
                     <q-btn classs="float-right" icon="reorder" flat @click="collapse=!collapse;" ><q-tooltip>Close the sidebar</q-tooltip></q-btn>
