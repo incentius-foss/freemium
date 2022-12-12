@@ -168,7 +168,7 @@
     </q-item-section>
   </q-item> -->
 
-  <!-- For QR-Code Generator-->
+  <!-- For QR-Code Generator -->
   <q-item
     clickable
     tag="a"
