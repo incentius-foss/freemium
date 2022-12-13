@@ -48,7 +48,7 @@
               >
             </div>
           </q-card-section>
-          <q-card-section style="margin-top: -20px">
+          <q-card-section class="q-pb-sm" style="margin-top: -20px">
             <textarea
             rows="8"
               class="textarea pl-4 pt-4"
@@ -56,8 +56,9 @@
               id="text"
               placeholder="Enter Your text here!!"
             ></textarea>
+            <!-- <q-input id="text" v-model="text" class="bg-white pl-4 pt-3 q-pb-none" placeholder="Enter Your text here!!" rows="8" type="textarea" /> -->
           </q-card-section>
-          <q-card-section style="margin-top: -20px">
+          <q-card-section style="margin-top: -15px">
             <div class="q-gutter-sm">
               <q-btn
                 size="sm"
@@ -148,7 +149,7 @@
               <p style="margin-top: 1em">&nbsp; | Line Count:{{ line }}</p>
             </div>
           </q-card-section>
-          <q-card-section class="q-pt-none">
+          <q-card-section class="q-py-none">
             <h6 class="text-h6">Result:</h6>
             <textarea
             class="pl-4 pt-4"
@@ -156,6 +157,7 @@
               id="result"
               placeholder="Result here!!"
             ></textarea>
+            <!-- <q-input  id="result" class="bg-white pl-4 pt-3 q-pb-none" placeholder="Result here!!" rows="8" type="textarea" /> -->
             <div class="q-gutter-sm" style="margin-top:5px">
               <q-btn
                 color="white"
@@ -341,12 +343,13 @@ export default defineComponent({
 
 <style scoped>
 .textarea {
-  width: 950px;
+  width: 100%;
 
 }
 
 textarea {
-  width: 950px;
+  height:180px;
+  width: 100%;
 
 }
 .q-btn{font-size: 12px !important; padding: 5px !important;
