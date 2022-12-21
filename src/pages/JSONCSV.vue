@@ -10,9 +10,9 @@
                 <!-- <q-card bordered class="my-card" > -->
                     <q-card-section class="q-pa-none q-ma-none">
                         <div class="ml-2 row">
-                            <div class="col-4 text-left">
+                            <div class="col-2 text-left">
                                 <b>Input :</b></div>
-                            <div class="col-8 text-right">
+                            <div class="col-10 text-right">
                                 <q-btn
                                     size="sm"
                                     color="white"
@@ -30,6 +30,24 @@
                                     dense
                                     @click="clear()"
                                     >Clear</q-btn
+                                >
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none text-black mr-2 rounded-md"
+                                    no-caps
+                                    dense
+                                   @click="showOutput()"
+                                    >Convert</q-btn
+                                >
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none text-black mr-2 rounded-md"
+                                    no-caps
+                                    dense
+                                   @click="downloadCSV()"
+                                    >Download CSV</q-btn
                                 >
                                 </div>
                                 
@@ -75,8 +93,9 @@
 			</div>
             
         </div>
-		<q-btn color="black" class="float-right mt-5 mr-8" label="Convert" @click="showOutput()" />
-        <q-btn color="black" class="float-right mt-5 mr-5" label="Download CSV" @click="downloadCSV()" />
+        
+		<!-- <q-btn color="black" class="float-right mt-5 mr-8" label="Convert" @click="showOutput()" />
+        <q-btn color="black" class="float-right mt-5 mr-5" label="Download CSV" @click="downloadCSV()" /> -->
    </q-page>
 
 </template>

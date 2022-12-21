@@ -12,7 +12,8 @@
                     <q-card-section vertical align="left">
                        
                         <input id="qr-text" autogrow class="full-width rounded  form-control bg-white pl-6" ref="text" rows="12" type="text"  placeholder="Text to generate QR code" />
-                        <q-btn class="mt-5 " @click="generateQRCode" color="black" label="Convert" />
+                        <!-- <q-btn class="mt-5 " @click="generateQRCode" color="black" label="Convert" /> -->
+                        <q-btn size="md" color="white" class="px-3 q-pa-none mr-2 mt-3 text-black rounded-md" no-caps dense @click="generateQRCode" >Convert</q-btn>
                     </q-card-section>
                 </div>
                 <q-separator class="q-pa-none q-ma-none"  vertical></q-separator>
