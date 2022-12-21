@@ -35,7 +35,7 @@
                     
                 </div>
             
-                <div class="container my-2 mx-3">
+                <div class="container my-2 mx-3" style="max-width: 100%">
                     <q-card class="my-card col-12">
                         <q-card-section>
                             <q-input class="pl-5" v-model="encodingInput" rows="11" placeholder="Input String" type="textarea" />
@@ -46,8 +46,7 @@
         </div>
             <q-separator />
             <span class="divider"></span>
-        <div class="full-width  row " >
-            <!-- <div class="ml-4 row"> -->
+                <div class="full-width  row " >
                     <div class="col-10 ml-4"><b>Output :</b>
                     </div>
                     <div class="col-1 ml-14 text-right">
@@ -60,16 +59,16 @@
                             @click="copyToClipboards()"
                         >Clipboard</q-btn>
                     </div>
-                </div>
-                <div class="container squred mt-2 mx-3">
+                
+                <div class="container squred mt-2 mx-3" style="max-width: 100%">
                     <q-card class="my-card col-12">
                         <q-card-section class="">
                             <q-input v-model="encodingOutput" class="pl-5" placeholder="Output String" rows="11" type="textarea" />
                         </q-card-section>
                     </q-card>
                 </div>
+            </div>
                    
-        <!-- </div> -->
     </div>
     </q-page>
 

@@ -35,7 +35,7 @@
                     
                 </div>
             
-                <div class="container my-2 mx-3">
+                <div class="container my-2 mx-3" style="max-width: 100%">
                     <q-card class="my-card col-12">
                         <q-card-section>
                             <q-input class="pl-5" v-model="encodedURLInput" rows="11" placeholder="Enter URL for Encode/Decode" type="textarea" />
@@ -59,14 +59,15 @@
                             @click="copyToClipboards()"
                         >Clipboard</q-btn>
                     </div>
-                </div>
-                <div class="container squred mt-2 mx-3">
+                
+                <div class="container squred mt-2 mx-3" style="max-width: 100%">
                     <q-card class="my-card col-12">
                         <q-card-section class="">
                             <q-input v-model="encodedURLOutput" class="pl-5" placeholder="Output String" rows="11" type="textarea" />
                         </q-card-section>
                     </q-card>
                 </div>
+        </div>
     </div>
         <!-- <div class="full-width justify-around items-start " style="background-color:#f6f0eb">
             <div class="flex flex-center">
