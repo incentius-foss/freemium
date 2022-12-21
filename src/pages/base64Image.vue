@@ -22,7 +22,7 @@
                             no-caps
                             dense
                             @click="copyToClipboards()"
-                        >Clipboards</q-btn></div>
+                        >Clipboard</q-btn></div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <q-input v-model="encodingOutput" class="bg-white pl-5" placeholder="Encoded String" ref="textarea"
                             rows="19"

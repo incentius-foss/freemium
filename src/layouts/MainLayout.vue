@@ -18,7 +18,7 @@
       >
       <div>
         <div class="">
-                <img class="q-mx-auto my-6 ml-1" src="../assets/freemium.png" style="width: 90%;">
+                <img class="q-mx-auto my-4 ml-1" src="../assets/freemiumlogo.png" style="width: 90%;">
               </div>
                 <q-separator ></q-separator>
         <div  v-if="!$q.screen.lt.sm" class="my-2 ml-1">
@@ -197,7 +197,7 @@
         <q-list >
           <div class="overflow-hidden mx-3">
               <div class="row">
-                <img class="q-mx-auto my-2" src="../assets/freemiumlogo.png" style="width: 100%;">
+                <img class="q-mx-auto my-1" src="../assets/freemiumlogo.png" height="80" style=" width: 100%;">
               </div>
                 <q-separator ></q-separator>
                 <div class="row">
