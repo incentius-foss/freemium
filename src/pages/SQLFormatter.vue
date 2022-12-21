@@ -31,6 +31,15 @@
                                     @click="clear()"
                                     >Clear</q-btn
                                 >
+                                <q-btn
+                                    size="sm"
+                                    color="white"
+                                    class="px-3 q-pa-none mr-2 text-black rounded-md"
+                                    no-caps
+                                    dense
+                                    @click="sql_formatter()"
+                                    >Convert</q-btn
+                                >
                                 </div>
                                 
                                 <!-- <div class="text-subtitle2"></div> -->
@@ -76,7 +85,7 @@
             
                 <!-- <q-btn color="black" class="justify-center mt-5" label="Format" @click="jsonFormatter()" /> -->
         </div>
-		<q-btn color="black" class="float-right mt-5 mr-5" label="Convert" @click="sql_formatter()" />
+		<!-- <q-btn color="black" class="float-right mt-5 mr-5" label="Convert" @click="sql_formatter()" /> -->
    </q-page>
 
 </template>

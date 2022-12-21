@@ -11,7 +11,7 @@
                         <div class="ml-1"><b>Upload Image</b></div>
                     </q-card-section>
                     <q-card-section class="q-my-none">
-                        <q-uploader  label="Upload Excel file" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
+                        <q-uploader  label="Upload image" type="file" flat color="teal" bordered multiple  style="width:100%" @added="encodeBase64"/>
 
                     </q-card-section>
                     <div class=" ml-5"><b>Output : </b>

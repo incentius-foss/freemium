@@ -289,7 +289,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksList = [
   {
     path:'/',
-    title: 'Dashboard',
+    title: 'Convert text style',
     icon: 'home',
   },
   {
