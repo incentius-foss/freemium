@@ -107,7 +107,7 @@ export default {
       formated_data: ""
     }
   },
-methods: {
+  methods: {
     copyToClipboards() {
       copyToClipboard(this.formated_data)
         .then(() => {
