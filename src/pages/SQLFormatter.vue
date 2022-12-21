@@ -119,7 +119,7 @@ export default {
         clear(){
             this.sql_data=''
         },
-        sample(){this.sql_data='{"sample_data": "sample_data", "data": "data", "name": "json"}'
+        sample(){this.sql_data="CREATE TABLE MortgageCompanies (ID INTEGER PRIMARY KEY, NAME CHAR(30)); INSERT INTO MortgageCompanies VALUES (1, 'Quicken Loans'); INSERT INTO MortgageCompanies VALUES (2, 'Wells Fargo Bank');INSERT INTO MortgageCompanies VALUES(3, 'JPMorgan Chase Bank'); SELECT * FROM MortgageCompanies;"
         },
         sql_formatter(){
             this.formated_data = format(this.sql_data)
