@@ -107,28 +107,6 @@ export default {
       formated_data: ""
     }
   },
-  methods: {
-    copyToClipboards() {
-      copyToClipboard(this.formated_data)
-        .then(() => {
-          this.$q.notify({
-            message: 'Your text copied successfully',
-            type: 'warning',
-            color: 'positive',
-            textColor: 'black',
-            icon: 'thumb_up_alt'
-          });
-        })
-        .catch(() => {
-
-        })
-    },
-    clear() {
-      this.sql_data = ''
-    },
-    sample() {
-      this.sql_data = '{"sample_data": "sample_data", "data": "data", "name": "json"}'
-    },
 methods: {
     copyToClipboards() {
       copyToClipboard(this.formated_data)
@@ -150,6 +128,10 @@ methods: {
     },
     sample(){this.sql_data="CREATE TABLE MortgageCompanies (ID INTEGER PRIMARY KEY, NAME CHAR(30)); INSERT INTO MortgageCompanies VALUES (1, 'Quicken Loans'); INSERT INTO MortgageCompanies VALUES (2, 'Wells Fargo Bank');INSERT INTO MortgageCompanies VALUES(3, 'JPMorgan Chase Bank'); SELECT * FROM MortgageCompanies;"
         },
+    sql_formatter() {
+      this.formated_data = format(this.sql_data)
+      console.log(this.formated_data);
+    }
   }
 }
 </script>
