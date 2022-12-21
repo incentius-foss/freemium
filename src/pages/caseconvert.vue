@@ -2,12 +2,12 @@
   <q-layout view="hHh Lpr lFf" v-cloak>
     <q-page-container>
       <q-page class="q-pa-md">
-        <div class="full-width flex row wrap justify-around items-start content-end" >
-            <div class="text-center ">
-                    <span class="rounded bg-grey-4 px-20 q-py-xs font-normal" >Convert text style</span>
-                </div>
+        <div class="full-width flex row wrap justify-around items-start content-end">
+          <div class="text-center ">
+            <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">Convert text style</span>
+          </div>
         </div>
-        <div class=" q-mt-sm" >
+        <div class=" q-mt-sm">
           <q-card-section>
             <div class="q-gutter-sm">
               <q-btn
@@ -17,7 +17,8 @@
                 dense
                 padding="7px"
                 @click="wideChar"
-                >Wide Text Generator</q-btn
+              >Wide Text Generator
+              </q-btn
               >
               <q-btn
                 color="white"
@@ -26,7 +27,8 @@
                 dense
                 padding="7px"
                 @click="strikeText"
-                >Strike Through Text Generator</q-btn
+              >Strike Through Text Generator
+              </q-btn
               >
               <q-btn
                 color="white"
@@ -35,7 +37,8 @@
                 dense
                 padding="7px"
                 @click="reverseText"
-                >Reverse Text Generator</q-btn
+              >Reverse Text Generator
+              </q-btn
               >
               <q-btn
                 color="white"
@@ -44,13 +47,14 @@
                 dense
                 padding="7px"
                 @click=" binaryText"
-                >Binary Text Generator</q-btn
+              >Binary Text Generator
+              </q-btn
               >
             </div>
           </q-card-section>
           <q-card-section class="q-pb-sm" style="margin-top: -20px">
             <textarea
-            rows="8"
+              rows="8"
               class="textarea pl-4 pt-4"
               v-model="text"
               id="text"
@@ -68,7 +72,8 @@
                 dense
                 padding="7px"
                 @click="capitalizeLetter"
-                >Sentence case</q-btn
+              >Sentence case
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -78,7 +83,8 @@
                 dense
                 padding="7px"
                 @click="convertToLowercase"
-                >lower case</q-btn
+              >lower case
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -89,7 +95,8 @@
                 padding="7px"
                 @click="convertToUppercase"
               >
-                UPPER CASE</q-btn
+                UPPER CASE
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -99,7 +106,8 @@
                 dense
                 padding="7px"
                 @click="capitalizeLetter"
-                >Capitelized case</q-btn
+              >Capitelized case
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -109,7 +117,8 @@
                 dense
                 padding="7px"
                 @click="alternateCase"
-                >aLtErNaTiNg cAsE</q-btn
+              >aLtErNaTiNg cAsE
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -119,7 +128,8 @@
                 dense
                 padding="7px"
                 @click="titleCase"
-                >Title Case</q-btn
+              >Title Case
+              </q-btn
               >
               <q-btn
                 size="sm"
@@ -129,7 +139,8 @@
                 dense
                 padding="7px"
                 @click="InverseCase"
-                >InVeRsE CaSe</q-btn
+              >InVeRsE CaSe
+              </q-btn
               >
 
               <q-btn
@@ -140,7 +151,8 @@
                 dense
                 padding="7px"
                 @click="Clear"
-                >Clear</q-btn
+              >Clear
+              </q-btn
               >
             </div>
             <div class="row">
@@ -152,8 +164,8 @@
           <q-card-section class="q-py-none">
             <h6 class="text-h6">Result:</h6>
             <textarea
-            class="pl-4 pt-4"
-            rows="7"
+              class="pl-4 pt-4"
+              rows="7"
               id="result"
               placeholder="Result here!!"
             ></textarea>
@@ -166,7 +178,8 @@
                 dense
                 padding="7px"
                 @click="copyText"
-                >Copy to clipboard</q-btn
+              >Copy to clipboard
+              </q-btn
               >
               <q-btn
                 color="white"
@@ -175,7 +188,8 @@
                 dense
                 padding="7px"
                 @click="Clear2"
-                >Clear</q-btn
+              >Clear
+              </q-btn
               >
             </div>
           </q-card-section>
@@ -186,8 +200,9 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { useQuasar } from "quasar";
+import {defineComponent} from "vue";
+import {useQuasar} from "quasar";
+
 export default defineComponent({
   name: "caseconvert",
   data() {
@@ -220,7 +235,7 @@ export default defineComponent({
       this.line = data.split("\n").length;
     },
 
-    
+
     convertToLowercase() {
       var data = document.getElementById("text").value;
       var lowerCase = data.toLowerCase();
@@ -290,12 +305,12 @@ export default defineComponent({
       data.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(data.value);
       this.$q.notify({
-                      message: 'Your text copied successfully',
-                      type: 'warning',
-                      color: 'positive',
-                      textColor: 'black',
-                      icon: 'thumb_up_alt'
-                  });
+        message: 'Your text copied successfully',
+        type: 'warning',
+        color: 'positive',
+        textColor: 'black',
+        icon: 'thumb_up_alt'
+      });
     },
     wideChar() {
       var data = document.getElementById("text").value;
@@ -326,13 +341,13 @@ export default defineComponent({
       document.getElementById('result').value = output;
     },
 
-    boldText(){
+    boldText() {
       var data = document.getElementById("text").value;
       var bold = data
       document.getElementById('result').value = bold;
 
     },
-    italicText(){
+    italicText() {
       var data = document.getElementById("text").value;
       var data1 = data.italics();
       document.getElementById('result').value = data1;
@@ -348,10 +363,13 @@ export default defineComponent({
 }
 
 textarea {
-  height:180px;
+  height: 180px;
   width: 100%;
 
 }
-.q-btn{font-size: 12px !important; padding: 5px !important;
+
+.q-btn {
+  font-size: 12px !important;
+  padding: 5px !important;
 }
 </style>
