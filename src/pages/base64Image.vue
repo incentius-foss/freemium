@@ -18,11 +18,11 @@
                     <q-btn
                             size="sm"
                             color="white"
-                            class="px-3 q-pa-none text-black mr-5 rounded-sm float-right"
+                            class="px-3 q-pa-none text-black mr-5 rounded-md float-right"
                             no-caps
                             dense
                             @click="copyToClipboards()"
-                        >Copy</q-btn></div>
+                        >Clipboards</q-btn></div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <q-input v-model="encodingOutput" class="bg-white pl-5" placeholder="Encoded String" ref="textarea"
                             rows="19"
