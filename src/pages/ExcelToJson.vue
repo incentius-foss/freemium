@@ -22,7 +22,7 @@
                             no-caps
                             dense
                             @click="copyText()"
-                        >Clicpboard</q-btn>
+                        >Clipboard</q-btn>
                     </div>
                     <div class="q-pa-md" style="max-width: 100%">
                         <textarea id="json-result"  placeholder="JSON Data" ref="textarea"
