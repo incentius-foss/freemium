@@ -4,7 +4,7 @@
       <q-page class="q-pa-md">
         <div class="full-width flex row wrap justify-around items-start content-end">
           <div class="text-center ">
-            <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">Convert text style</span>
+            <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">Convert text style</span>
           </div>
         </div>
         <div class=" q-mt-sm">

@@ -2,7 +2,7 @@
   <q-page>
     <div class="full-width flex row wrap justify-around items-start content-end">
       <div class="text-center q-my-md">
-        <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">Image To Base64</span>
+        <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">Image To Base64</span>
       </div>
     </div>
     <div>

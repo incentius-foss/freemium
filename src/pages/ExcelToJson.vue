@@ -2,7 +2,7 @@
   <q-page>
     <div class="full-width flex row wrap justify-around items-start content-end">
       <div class="text-center q-my-md">
-        <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">Excel To JSON</span>
+        <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">Excel To JSON</span>
       </div>
     </div>
     <div>

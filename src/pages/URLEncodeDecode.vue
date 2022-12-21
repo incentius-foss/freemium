@@ -2,7 +2,7 @@
   <q-page>
     <div class="full-width flex row wrap justify-around items-start content-end">
       <div class="text-center q-my-md">
-        <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">URL Encode/Decode</span>
+        <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">URL Encode/Decode</span>
       </div>
       <div class="full-width flex row wrap">
         <div class="mt-2 ml-4 col-8 ">

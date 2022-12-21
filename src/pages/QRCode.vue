@@ -2,7 +2,7 @@
   <q-page>
     <div class="full-width flex row wrap justify-around items-start content-end">
       <div class="text-center q-my-md">
-        <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">QR-Code Generator</span>
+        <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">QR-Code Generator</span>
       </div>
     </div>
     <div class="full-width flex justify-between row wrap justify-around items-start content-end">

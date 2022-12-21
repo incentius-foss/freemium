@@ -2,7 +2,7 @@
   <q-page>
     <div class="full-width flex row wrap justify-around items-start content-end">
       <div class="text-center q-my-md">
-        <span class="rounded bg-grey-4 px-20 q-py-xs font-normal">Text To PDF</span>
+        <span class="rounded bg-grey-4 px-20 q-py-xs font-semibold">Text To PDF</span>
       </div>
     </div>
     <div>
