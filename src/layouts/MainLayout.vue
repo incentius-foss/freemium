@@ -200,7 +200,7 @@
                 <img class="q-mx-auto my-1" src="../assets/freemiumlogo.png" height="80" style=" width: 100%;">
               </div>
                 <q-separator ></q-separator>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-9 my-2 ml-2">
                     <q-input class="float-right q-my-sm q-mr-sm" outlined color="gray" dense debounce="300" v-model="search_data"
                         placeholder="search">
@@ -212,7 +212,7 @@
                   <div class="col-2 mt-4 ml-2">
                     <q-btn classs="float-right" icon="reorder" flat @click="collapse=!collapse;" ><q-tooltip>Close the sidebar</q-tooltip></q-btn>
                   </div>
-                </div>
+                </div> -->
                 
           
               
