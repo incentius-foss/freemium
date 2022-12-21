@@ -10,7 +10,7 @@
     <!--      </q-toolbar>-->
     <!--    </q-header>-->
     <q-drawer v-if="collapse"
-        :width='60'
+        :width='65'
         v-model="leftDrawerOpen"
         show-if-above
         bordered
@@ -18,17 +18,17 @@
       >
       <div>
         <div class="">
-                <img class="q-mx-auto my-6" src="../assets/freemium.png" style="width: 90%;">
+                <img class="q-mx-auto my-6 ml-1" src="../assets/freemium.png" style="width: 90%;">
               </div>
                 <q-separator ></q-separator>
-        <div  v-if="!$q.screen.lt.sm" class="my-2">
+        <div  v-if="!$q.screen.lt.sm" class="my-2 ml-1">
           <q-btn icon="reorder" flat @click="collapse=!collapse;"><q-tooltip size="10px">Open the sidebar</q-tooltip></q-btn>
         </div>
       
                
-        <div :key="index" v-for="(link,index) in getSearchData">
-          <a @click="$route.path==link.path ? '' : $router.push(link.path)" :class="$route.path==link.path ? 'bg-blue-500 text-white rounded-xl border-gray-700' : 'text-black hover:bg-bl-700 hover:text-white'" class="cursor-pointer group flex items-center px-2 py-2 text-sm font-medium" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                      <q-icon  size="sm" class="ml-2 " :name="link.icon" alt=""/>
+        <div :key="index" v-for="(link,index) in getSearchData" class="px-1">
+          <a @click="$route.path==link.path ? '' : $router.push(link.path)" :class="$route.path==link.path ? 'bg-blue-500 text-white rounded-xl border-gray-700' : 'text-black hover:bg-bl-700 hover:text-white'" class="cursor-pointer group flex items-center px-4 py-2 text-sm font-medium" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                      <q-icon  size="sm" class=" align-center" :name="link.icon" alt=""/>
                       <q-tooltip>{{link.title}}</q-tooltip>        
                   
                     </a>
@@ -269,6 +269,15 @@
           </div>
           
         </q-list>
+        <div class="footer flex justify-center q-mt-md text-center text-caption text-secondary mb-2">
+          <span> Made with 
+            <span>
+              <i class="q-icon text-red notranslate material-icons" aria-hidden="true" role="presentation" style="font-size: 18px;">favorite</i> by 
+            </span> 
+              <a href="https://incentius.com" class="text-blue"> incentius.com </a>
+          </span>
+        </div>
+
          
         <!-- <div  v-if="!$q.screen.lt.sm" class="mt-2 flex items-center justify-center">
           <q-btn icon="reorder" flat @click="collapse=!collapse;" ><q-tooltip>Close the sidebar</q-tooltip></q-btn>
@@ -381,5 +390,11 @@ export default defineComponent({
 }
 .q-field--outlined .q-field__control {
     border-radius: 10px;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
 }
 </style>
