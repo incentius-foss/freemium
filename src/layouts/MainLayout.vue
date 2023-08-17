@@ -12,7 +12,7 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered >
       <Drawer />
     </q-drawer>
-    <q-page-container class="backgroundcolor">
+    <q-page-container class="backgroundcolor montserrat">
       <router-view/>
     </q-page-container>
 
