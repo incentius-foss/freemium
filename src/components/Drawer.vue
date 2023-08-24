@@ -44,25 +44,25 @@ export default defineComponent({
         {
           label:'Text',
           tools:[{
-          path: '/',
-          title: 'Convert text style',
-          icon: 'home',
-        },
-        {
-          path: '/base64',
-          title: 'Base64 Converter',
-          icon: 'code',
-        },
-        {
-          path: '/urlencodedecode',
-          title: 'URL Enode Decode',
-          icon: 'link',
-        },
-        {
-          path: '/qrcode',
-          title: 'QR-Code Generator',
-          icon: 'qr_code_scanner',
-        }],
+            path: '/',
+            title: 'Convert text style',
+            icon: 'home',
+          },
+          {
+            path: '/base64',
+            title: 'Base64 Converter',
+            icon: 'code',
+          },
+          {
+            path: '/urlencodedecode',
+            title: 'URL Enode Decode',
+            icon: 'link',
+          },
+          {
+            path: '/qrcode',
+            title: 'QR-Code Generator',
+            icon: 'qr_code_scanner',
+          }],
         },
         {
           label:'Image',
@@ -70,7 +70,7 @@ export default defineComponent({
             path: '/base64Image',
             title: 'Base64 Image Converter',
             icon: 'image',
-        }],
+          }],
         },
         {
           label:'Data',
