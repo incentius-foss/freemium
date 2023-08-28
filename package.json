@@ -1,8 +1,8 @@
 {
-  "name": "freemium-v2",
+  "name": "freemium",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "Freemium 2",
+  "productName": "Freemium",
   "author": "akashmelkeri-incentius <akash.melkeri@incentius.com>",
   "private": true,
   "scripts": {
