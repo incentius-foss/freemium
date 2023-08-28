@@ -36,7 +36,7 @@
     </div>
     <div class="tw-shrink-0 tw-text-center tw-p-4 tw-w-full">
       <span class="tw-text-gray-400 tw-font-bold">Made with <i class="q-icon tw-text-red-500 notranslate material-icons" aria-hidden="true" role="presentation"
-        style="font-size: 18px;">favorite</i> by <span class="tw-bg-gradient-to-r tw-from-white tw-via-white/90 tw-to-white/80 tw-inline-block tw-text-transparent tw-bg-clip-text tw-cursor-pointer ">TheBlazarCode</span></span>
+        style="font-size: 18px;">favorite</i> by <span class="tw-bg-gradient-to-r tw-from-white tw-via-white/90 tw-to-white/80 tw-inline-block tw-text-transparent tw-bg-clip-text tw-cursor-pointer ">Incentius</span></span>
     </div>
   </div>
 </template>
