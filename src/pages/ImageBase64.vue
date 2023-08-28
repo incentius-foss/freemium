@@ -4,62 +4,51 @@
       <div class="tw-p-4 tw-shrink-0 tw-flex tw-items-center tw-justify-between">
         <div class="">
           <div class="tw-text-2xl tw-font-bold">
-            Excel to JSON Converter
+            Image to Base64 Converter
           </div>
           <div class="tw-font-bold tw-text-gray-400">
-            Convert Excel to JSON
+            COnvert any image to base64
           </div>
         </div>
         <ActionButtons />
       </div>
-      <div class="tw-flex tw-w-full tw-gap-4 tw-px-4 tw-grow tw-pb-4">
-        <div class=" tw-w-72 tw-flex tw-flex-col tw-gap-4">
+      <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-px-4 tw-grow tw-pb-4">
+        <div class=" tw-flex tw-flex-col tw-gap-4">
           <div class="tw-shrink-0 tw-flex tw-gap-2">
-            <q-btn @click="add_sample" no-caps unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 ">
+            <q-btn @click="sampleImage" no-caps unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 ">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
-                <span>Sample Excel File</span>
+                <span>Sample Image</span>
               </div>
               <q-tooltip>
-                Add a sample Excel File
+                Add a sample Image
               </q-tooltip>
             </q-btn>
           </div>
           <div class="tw-grow tw-flex tw-flex-col tw-max-h-full ">
-            <q-file @update:model-value="onFileDrop" v-model="input_file" class="image-picker tw-overflow-hidden tw-h-48 tw-border tw-border-dashed tw-border-white/50 tw-rounded-xl" borderless >
+            <q-file @update:model-value="onImageDrop" ref="image_picker" v-model="input_image" class="image-picker tw-overflow-hidden tw-grow tw-border tw-border-dashed tw-border-white/50 tw-rounded-xl" borderless >
               <template v-slot:file>
-                <div class="tw-h-full tw-w-full tw-bg-black/20">
-                  <div class="tw-w-full tw-bg-white/10 tw-p-4 tw-text-lg">
-                    Selected File :
-                  </div>
-                  <div class="">
-                    <q-item>
-                      <q-item-section class="ellipsis">
-                        {{ input_file.name }}
-                      </q-item-section>
-                      <q-item-section side>
-                        {{ (input_file.size/1024).toFixed(2) }} kb
-                      </q-item-section>
-                    </q-item>
-                  </div>
+                <div class="tw-h-full tw-w-full ">
+                  <q-img :src="this.output_text" fit="cover" class="tw-h-full tw-w-full"></q-img>
                 </div>
               </template>
-              <div v-if="!input_file" class="tw-absolute tw--z-10 tw-w-full tw-h-full tw-flex tw-flex-col tw-text-white tw-items-center tw-justify-center">
+              <div v-if="!input_image" class="tw-absolute tw--z-10 tw-w-full tw-h-full tw-flex tw-flex-col tw-text-white tw-items-center tw-justify-center">
                 <div>
-                  Drag and drop your excel file here
+                  Drag and drop your image here
                 </div>
                 <div>Or</div>
                 <div>
                   <q-btn dense flat class="tw-rounded-lg tw-px-3 tw-underline" no-caps>
                     <span>Choose files</span>
+                    <q-file ref="image_picker" v-model="input_image" class="tw-hidden" label="Standard" />
                   </q-btn>
                 </div>
               </div>
             </q-file>
           </div>
         </div>
-        <div class=" tw-flex tw-flex-col tw-gap-4 tw-grow">
+        <div class=" tw-flex tw-flex-col tw-gap-4">
           <div class="tw-shrink-0 tw-flex tw-justify-end tw-gap-2">
-            <q-btn @click="input_text = '', output_text = ''" unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 tw-text-red-400">
+            <q-btn @click="input_image = null, output_text = ''" unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 tw-text-red-400">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
                 <span>Clear</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>
@@ -89,12 +78,10 @@
 </template>
 <script>
 import { defineComponent, ref } from 'vue'
-import * as XLSX from 'xlsx'
 import ActionButtons from 'src/components/ActionButtons.vue'
 
-
 export default defineComponent({
-  name: 'ExcelToJson',
+  name: 'UrlConverter',
   components:{
     ActionButtons
   },
@@ -102,37 +89,64 @@ export default defineComponent({
     return {
       convert_option:ref('Encode'),
       input_text:ref(''),
+      input_image:ref(),
       output_text:ref(''),
-      input_file:ref()
     }
   },
   methods:{
-    async add_sample(){
+    handle_action(){
+      this.convert_option == 'Encode'?this.encode():this.decode()
+    },
+    async sampleImage(){
       try {
-        const response = await fetch('/sample.xlsx');
+        const response = await fetch('/favicon.ico');
         const blob = await response.blob();
-        this.input_file = new File([blob],'sample.xlsx')
-        this.onFileDrop(blob)
+        const reader = new FileReader();
+        reader.onload = ()=> {
+          this.output_text = reader.result;
+          this.input_image = new File([blob],"sample.ico")
+        };
+        reader.readAsDataURL(blob);
       } catch (error) {
         console.error('Error:', error);
+
+        this.$q.notify({
+          type:'negative',
+          message:error
+        })
+      }
+
+    },
+    onImageDrop(file){
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        this.output_text = reader.result;
+      }
+      reader.readAsDataURL(file);
+    },
+    encodeBase64(event) {
+      const file = event[0]
+      const reader = new FileReader()
+
+      let rawImg;
+      reader.onloadend = () => {
+        this.output_text = reader.result;
+      }
+      reader.readAsDataURL(file);
+      console.log(file)
+    },
+    encode(){
+      try{
+        this.output_text = encodeURIComponent(this.input_text)
+      }catch{
+        this.output_text = this.input_text
       }
     },
-    onFileDrop(file){
-      let reader = new FileReader()
-      reader.onloadend = (e)=>{
-        this.convert(e.target.result)
-      }
-      reader.readAsArrayBuffer(file)
-    },
-    convert(file){
-      let workbook = XLSX.read(file)
-      let sheet_names = workbook.SheetNames
-      if(sheet_names.length){
-        let sheet = workbook.Sheets[sheet_names[0]]
-        let out = XLSX.utils.sheet_to_json(sheet)
-        this.output_text = JSON.stringify(XLSX.utils.sheet_to_json(sheet))
-      }else{
-        console.error("Empty excel");
+    decode(){
+      try{
+        this.output_text = decodeURIComponent(this.input_text)
+      }catch{
+        this.output_text = this.input_text
       }
     },
     copy(){

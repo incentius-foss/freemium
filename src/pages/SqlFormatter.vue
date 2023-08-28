@@ -4,60 +4,33 @@
       <div class="tw-p-4 tw-shrink-0 tw-flex tw-items-center tw-justify-between">
         <div class="">
           <div class="tw-text-2xl tw-font-bold">
-            Excel to JSON Converter
+            SQL Formatter
           </div>
           <div class="tw-font-bold tw-text-gray-400">
-            Convert Excel to JSON
+            Encode or decode URLs.
           </div>
         </div>
         <ActionButtons />
       </div>
-      <div class="tw-flex tw-w-full tw-gap-4 tw-px-4 tw-grow tw-pb-4">
-        <div class=" tw-w-72 tw-flex tw-flex-col tw-gap-4">
+      <div class="tw-grid tw-grid-cols-2 tw-gap-4 tw-px-4 tw-grow tw-pb-4">
+        <div class=" tw-flex tw-flex-col tw-gap-4">
           <div class="tw-shrink-0 tw-flex tw-gap-2">
             <q-btn @click="add_sample" no-caps unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 ">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
-                <span>Sample Excel File</span>
+                <span>Sample SQL query</span>
               </div>
               <q-tooltip>
-                Add a sample Excel File
+                Add a sample SQL query
               </q-tooltip>
             </q-btn>
           </div>
-          <div class="tw-grow tw-flex tw-flex-col tw-max-h-full ">
-            <q-file @update:model-value="onFileDrop" v-model="input_file" class="image-picker tw-overflow-hidden tw-h-48 tw-border tw-border-dashed tw-border-white/50 tw-rounded-xl" borderless >
-              <template v-slot:file>
-                <div class="tw-h-full tw-w-full tw-bg-black/20">
-                  <div class="tw-w-full tw-bg-white/10 tw-p-4 tw-text-lg">
-                    Selected File :
-                  </div>
-                  <div class="">
-                    <q-item>
-                      <q-item-section class="ellipsis">
-                        {{ input_file.name }}
-                      </q-item-section>
-                      <q-item-section side>
-                        {{ (input_file.size/1024).toFixed(2) }} kb
-                      </q-item-section>
-                    </q-item>
-                  </div>
-                </div>
-              </template>
-              <div v-if="!input_file" class="tw-absolute tw--z-10 tw-w-full tw-h-full tw-flex tw-flex-col tw-text-white tw-items-center tw-justify-center">
-                <div>
-                  Drag and drop your excel file here
-                </div>
-                <div>Or</div>
-                <div>
-                  <q-btn dense flat class="tw-rounded-lg tw-px-3 tw-underline" no-caps>
-                    <span>Choose files</span>
-                  </q-btn>
-                </div>
-              </div>
-            </q-file>
+          <div class="tw-grow tw-flex tw-flex-col tw-max-h-full">
+            <q-input v-model="input_text" type="textarea" borderless class="tw-grow" placeholder="Input here . . .">
+
+            </q-input>
           </div>
         </div>
-        <div class=" tw-flex tw-flex-col tw-gap-4 tw-grow">
+        <div class=" tw-flex tw-flex-col tw-gap-4">
           <div class="tw-shrink-0 tw-flex tw-justify-end tw-gap-2">
             <q-btn @click="input_text = '', output_text = ''" unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 tw-text-red-400">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
@@ -66,6 +39,15 @@
               </div>
               <q-tooltip>
                 Clear all
+              </q-tooltip>
+            </q-btn>
+            <q-btn @click="handle_action" unelevated size="1.1em" class="tw-rounded-lg tw-bg-green-700">
+              <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
+                <span>Format</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" viewBox="0 0 24 24"><path fill="currentColor" d="M5.825 16L7.7 17.875q.275.275.275.688t-.275.712q-.3.3-.713.3t-.712-.3L2.7 15.7q-.15-.15-.213-.325T2.426 15q0-.2.063-.375T2.7 14.3l3.6-3.6q.3-.3.7-.287t.7.312q.275.3.288.7t-.288.7L5.825 14H12q.425 0 .713.288T13 15q0 .425-.288.713T12 16H5.825Zm12.35-6H12q-.425 0-.713-.288T11 9q0-.425.288-.713T12 8h6.175L16.3 6.125q-.275-.275-.275-.688t.275-.712q.3-.3.713-.3t.712.3L21.3 8.3q.15.15.212.325t.063.375q0 .2-.063.375T21.3 9.7l-3.6 3.6q-.3.3-.7.288t-.7-.313q-.275-.3-.288-.7t.288-.7L18.175 10Z"/></svg>
+              </div>
+              <q-tooltip>
+                Format JSON to CSV
               </q-tooltip>
             </q-btn>
           </div>
@@ -89,12 +71,11 @@
 </template>
 <script>
 import { defineComponent, ref } from 'vue'
-import * as XLSX from 'xlsx'
 import ActionButtons from 'src/components/ActionButtons.vue'
-
+import {format} from "sql-formatter";
 
 export default defineComponent({
-  name: 'ExcelToJson',
+  name: 'SqlFormatter',
   components:{
     ActionButtons
   },
@@ -103,37 +84,14 @@ export default defineComponent({
       convert_option:ref('Encode'),
       input_text:ref(''),
       output_text:ref(''),
-      input_file:ref()
     }
   },
   methods:{
-    async add_sample(){
-      try {
-        const response = await fetch('/sample.xlsx');
-        const blob = await response.blob();
-        this.input_file = new File([blob],'sample.xlsx')
-        this.onFileDrop(blob)
-      } catch (error) {
-        console.error('Error:', error);
-      }
+    add_sample(){
+      this.input_text = "CREATE TABLE MortgageCompanies (ID INTEGER PRIMARY KEY, NAME CHAR(30)); INSERT INTO MortgageCompanies VALUES (1, 'Quicken Loans'); INSERT INTO MortgageCompanies VALUES (2, 'Wells Fargo Bank');INSERT INTO MortgageCompanies VALUES(3, 'JPMorgan Chase Bank'); SELECT * FROM MortgageCompanies;"
     },
-    onFileDrop(file){
-      let reader = new FileReader()
-      reader.onloadend = (e)=>{
-        this.convert(e.target.result)
-      }
-      reader.readAsArrayBuffer(file)
-    },
-    convert(file){
-      let workbook = XLSX.read(file)
-      let sheet_names = workbook.SheetNames
-      if(sheet_names.length){
-        let sheet = workbook.Sheets[sheet_names[0]]
-        let out = XLSX.utils.sheet_to_json(sheet)
-        this.output_text = JSON.stringify(XLSX.utils.sheet_to_json(sheet))
-      }else{
-        console.error("Empty excel");
-      }
+    handle_action(){
+      this.output_text = format(this.input_text)
     },
     copy(){
       this.$refs.output.select()

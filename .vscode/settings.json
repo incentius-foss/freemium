@@ -1,4 +1,4 @@
 {
-  
-  "vetur.experimental.templateInterpolationService": true
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true
 }

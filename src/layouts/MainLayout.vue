@@ -1,133 +1,39 @@
 <template>
-  <q-layout view="lHh lpr lFf">
-    <!--    <q-header elevated>-->
-    <!--      <q-toolbar>-->
-    <!--        <q-toolbar-title>-->
-    <!--          Quasar App-->
-    <!--        </q-toolbar-title>-->
-
-    <!--        <div>Quasar v{{ $q.version }}</div>-->
-    <!--      </q-toolbar>-->
-    <!--    </q-header>-->
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered >
-      <Drawer />
+  <q-layout view="lHh Lpr lFf">
+    <div class="tw-brightness-75 fullscreen tw-absolute tw-top-0 tw-left-0 tw-z-0" style="background-image:url('/bg.jpg');background-size: cover;background-repeat: no-repeat;">
+      <!-- <div class="tw-h-96 tw-w-96 tw-bg-black/30 tw-border tw-border-t-white/40 tw-border-l-white/40 tw-border-r-white/50 tw-border-b-white/50 tw-rounded-2xl tw-backdrop-blur-lg"></div> -->
+    </div>
+    <q-drawer v-model="leftDrawerOpen" show-if-above class="tw-p-4" >
+      <Drawer class="glass-body tw-border-r tw-rounded-2xl glass-border" />
     </q-drawer>
-    <q-page-container class="montserrat">
-      <router-view/>
+    <q-page-container>
+      <router-view class="montserrat" />
     </q-page-container>
-
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-// import Sidebarcollapse from 'components/Sidebarcollapse.vue'
+import { defineComponent, ref } from 'vue'
 import Drawer from 'src/components/Drawer.vue'
-
-const linksList = [
-  {
-    path: '/',
-    title: 'Convert text style',
-    icon: 'home',
-  },
-  {
-    path: '/jsonformatter',
-    title: 'JSON Formatter',
-    icon: 'data_object',
-
-  },
-  {
-    path: '/jsoncsv',
-    title: 'JSON TO CSV',
-    icon: 'description',
-
-  },
-  {
-    path: '/sqlformatter',
-    title: 'SQL Formatter',
-    icon: 'article'
-  },
-  {
-    path: '/base64',
-    title: 'Base64 Converter',
-    icon: 'code',
-  },
-  {
-    path: '/base64Image',
-    title: 'Base64 Image Converter',
-    icon: 'image',
-
-  },
-  {
-    path: '/urlencodedecode',
-    title: 'URL Enode Decode',
-    icon: 'link',
-  },
-  {
-    path: '/exceltojson',
-    title: 'Excel To JSON',
-    icon: 'source',
-
-  },
-  {
-    path: '/qrcode',
-    title: 'QR-Code Generator',
-    icon: 'qr_code_scanner',
-
-  },
-
-];
-
-import {defineComponent, ref} from 'vue'
 
 export default defineComponent({
   name: 'MainLayout',
-
-  components: {
-    EssentialLink,
-    Drawer,
+  components:{
+    Drawer
   },
-
-  setup() {
-    const leftDrawerOpen = ref(false)
-
+  setup () {
     return {
-      leftDrawerOpen,
-      collapse: ref(false),
-      essentialLinks: ref(linksList),
-      search_data: ref('')
+      leftDrawerOpen:ref(false),
+      toggleLeftDrawer () {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
     }
-  },
-  methods: {},
-  computed: {
-    getSearchData() {
-      return this.essentialLinks.filter(data => {
-        return data.title.toLowerCase().includes(this.search_data.toLowerCase())
-      })
-    }
-
   }
 })
 </script>
-
-<style scoped>
-.backgroundcolor {
-  background-color: #f6f0eb;
-
+<style>
+.q-drawer{
+  background: transparent !important;
 }
 
-.q-item {
-  padding: 0px, 0px;
-}
-
-.q-field--outlined .q-field__control {
-  border-radius: 10px;
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
 </style>
