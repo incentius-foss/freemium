@@ -4,10 +4,10 @@
       <div class="tw-p-4 tw-shrink-0 tw-flex tw-items-center tw-justify-between">
         <div class="">
           <div class="tw-text-2xl tw-font-bold">
-            JSON Formatter
+            JSON to CSV Converter
           </div>
           <div class="tw-font-bold tw-text-gray-400">
-            Format any json.
+            Convert JSON to CSV
           </div>
         </div>
         <ActionButtons />
@@ -20,7 +20,7 @@
                 <span>Sample JSON</span>
               </div>
               <q-tooltip>
-                Add a sample URL
+                Add a sample JSON
               </q-tooltip>
             </q-btn>
           </div>
@@ -43,21 +43,21 @@
             </q-btn>
             <q-btn @click="handle_action" unelevated size="1.1em" class="tw-rounded-lg tw-bg-green-700">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
-                <span>Format</span>
+                <span>Convert</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" viewBox="0 0 24 24"><path fill="currentColor" d="M5.825 16L7.7 17.875q.275.275.275.688t-.275.712q-.3.3-.713.3t-.712-.3L2.7 15.7q-.15-.15-.213-.325T2.426 15q0-.2.063-.375T2.7 14.3l3.6-3.6q.3-.3.7-.287t.7.312q.275.3.288.7t-.288.7L5.825 14H12q.425 0 .713.288T13 15q0 .425-.288.713T12 16H5.825Zm12.35-6H12q-.425 0-.713-.288T11 9q0-.425.288-.713T12 8h6.175L16.3 6.125q-.275-.275-.275-.688t.275-.712q.3-.3.713-.3t.712.3L21.3 8.3q.15.15.212.325t.063.375q0 .2-.063.375T21.3 9.7l-3.6 3.6q-.3.3-.7.288t-.7-.313q-.275-.3-.288-.7t.288-.7L18.175 10Z"/></svg>
               </div>
               <q-tooltip>
-                Format JSON
+                Convert JSON to CSV
               </q-tooltip>
             </q-btn>
           </div>
           <div class="tw-grow tw-flex tw-flex-col tw-ov">
             <q-input ref="output" v-model="output_text" readonly type="textarea" borderless class="tw-max-h-full tw-grow" placeholder="Output will be here . . .">
               <template v-slot:append>
-                <q-btn @click="copy" dense flat class="tw-rounded-lg tw-p-2 tw-bg-black/20">
-                  <q-icon name="content_copy"></q-icon>
+                <q-btn @click="download" dense flat class="tw-rounded-lg tw-p-2 tw-bg-black/20">
+                  <q-icon name="download"></q-icon>
                   <q-tooltip>
-                    Copy
+                    Download
                   </q-tooltip>
                 </q-btn>
               </template>
@@ -71,9 +71,10 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import ActionButtons from 'src/components/ActionButtons.vue'
+import { json2csv } from 'json-2-csv'
 
 export default defineComponent({
-  name: 'JsonFormatter',
+  name: 'JsonToCsv',
   components:{
     ActionButtons
   },
@@ -82,26 +83,57 @@ export default defineComponent({
       convert_option:ref('Encode'),
       input_text:ref(''),
       output_text:ref(''),
-      config : {
-        type: 'space',
-        size: 2
-      }
     }
   },
   methods:{
     add_sample(){
-      this.input_text = `{"sample_data": "sample_data", "data": "data", "name": "json"}`
+      this.input_text = `[{"sample_data": "sample_data", "data": "data", "name": "json"}]`
     },
     handle_action(){
-      this.output_text = JSON.stringify(JSON.parse(this.input_text), undefined, '\t')
-    },
-    copy(){
-      this.$refs.output.select()
-      navigator.clipboard.writeText(this.output_text)
-      this.$q.notify({
-        type:'positive',
-        message:"Copied to clipboard"
+      json2csv(JSON.parse(this.input_text)).then(response=>{
+        this.output_text = response
+      }).catch(error=>{
+        this.$q.notify({
+          type:'positive',
+          message:error
+        })
+        console.error(error)
       })
+    },
+    download(){
+      if(this.output_text){
+        let fileToSave = new Blob([this.output_text], {
+          type: "text/csv;charset=utf-8",
+          name: 'freemium-json-to.csv'
+        });
+        this.saveFile(fileToSave, 'freemium-json-to.csv');
+        this.$q.notify({
+          type:'positive',
+          message:"File Downloading started..."
+        })
+      }else{
+        console.error("No data")
+        this.$q.notify({
+          type:'negative',
+          message:"No data found."
+        })
+      }
+    },
+    saveFile(blob, filename) {
+      if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename);
+      } else {
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        const url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = filename;
+        a.click();
+        setTimeout(() => {
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        }, 0)
+      }
     },
   },
 })
