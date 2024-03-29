@@ -32,7 +32,7 @@
         </div>
         <div class=" tw-flex tw-flex-col tw-gap-4">
           <div class="tw-shrink-0 tw-flex tw-justify-end tw-gap-2">
-            <q-btn @click="input_text = '', output_text = ''" unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 tw-text-red-400">
+            <q-btn @click="input_text = ''; output_text = ''" unelevated size="1.1em" class="tw-rounded-lg tw-bg-white/20 tw-text-red-400">
               <div class="tw-flex tw-justify-between tw-gap-2 tw-items-center">
                 <span>Clear</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6L6.4 19Z"/></svg>

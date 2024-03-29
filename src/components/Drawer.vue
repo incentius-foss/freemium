@@ -7,13 +7,13 @@
       <div>Freemium</div>
     </div>
     <div class="tw-grow tw-flex tw-flex-col">
-      <div class="tw-shrink-0 tw-p-4">
-        <q-input placeholder="Search" v-model="search" borderless class="" dense>
-          <template v-slot:append>
-            <q-icon name="search"></q-icon>
-          </template>
-        </q-input>
-      </div>
+<!--      <div class="tw-shrink-0 tw-p-4">-->
+<!--        <q-input placeholder="Search" v-model="search" borderless class="" dense>-->
+<!--          <template v-slot:append>-->
+<!--            <q-icon name="search"></q-icon>-->
+<!--          </template>-->
+<!--        </q-input>-->
+<!--      </div>-->
       <div class="tw-grow">
         <q-scroll-area style="height: 100%;" class="tw-shadow-inner">
           <q-list>

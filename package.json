@@ -9,12 +9,12 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.16.10",
     "axios": "^0.21.1",
     "json-2-csv": "^4.1.0",
     "pinia": "^2.0.11",
     "qrious": "^4.0.2",
-    "quasar": "^2.6.0",
+    "quasar": "^2.15.1",
     "sql-formatter": "^12.2.4",
     "vue": "^3.0.0",
     "vue-i18n": "^9.0.0",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
-    "@quasar/app-vite": "^1.0.0",
+    "@quasar/app-vite": "^1.8.0",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.3.3"

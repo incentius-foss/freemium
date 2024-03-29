@@ -7,7 +7,7 @@
             Image to Base64 Converter
           </div>
           <div class="tw-font-bold tw-text-gray-400">
-            COnvert any image to base64
+            Convert any image to base64
           </div>
         </div>
         <ActionButtons />
