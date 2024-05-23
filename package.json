@@ -12,6 +12,7 @@
     "@quasar/extras": "^1.16.10",
     "axios": "^0.21.1",
     "cron-parser": "^4.9.0",
+    "js-beautify": "^1.15.1",
     "js-yaml": "^4.1.0",
     "json-2-csv": "^4.1.0",
     "pinia": "^2.0.11",

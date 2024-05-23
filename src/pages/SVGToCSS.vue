@@ -53,10 +53,10 @@
           <div class="tw-grow tw-flex tw-flex-col tw-ov">
             <q-input ref="output" v-model="output_css" readonly type="textarea" borderless class="tw-max-h-full tw-grow" placeholder="Output will be here . . .">
               <template v-slot:append>
-                <q-btn @click="download" dense flat class="tw-rounded-lg tw-p-2 tw-bg-black/20">
-                  <q-icon name="download"></q-icon>
+                <q-btn @click="copy" dense flat class="tw-rounded-lg tw-p-2 tw-bg-black/20">
+                  <q-icon name="content_copy"></q-icon>
                   <q-tooltip>
-                    Download
+                    Copy
                   </q-tooltip>
                 </q-btn>
               </template>
@@ -84,6 +84,16 @@ export default defineComponent({
     }
   },
   methods:{
+
+    copy(){
+      console.log(this.output_css)
+      this.$refs.output.select()
+      navigator.clipboard.writeText(this.output_css)
+      this.$q.notify({
+        type:'positive',
+        message:"Copied to clipboard"
+      })
+    },
     add_sample(){
       this.input_text = `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
   <rect width="100" height="100" fill="red"/>
