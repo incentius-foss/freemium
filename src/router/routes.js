@@ -20,6 +20,11 @@ const routes = [
       { path: '/json-to-csv',name:'json-to-csv', component: () => import('pages/JsonToCsv.vue') },
       { path: '/sql-formatter',name:'sql-formatter', component: () => import('pages/SqlFormatter.vue') },
       { path: '/excel-to-json',name:'excel-to-json', component: () => import('pages/ExcelToJson.vue') },
+      { path: '/yaml-to-json',name:'yaml-to-json', component: () => import('pages/YamlToJson.vue') },
+      { path: '/json-to-yaml',name:'json-to-yaml', component: () => import('pages/JSONToYAML.vue') },
+      { path: '/svg-to-css',name:'svg-to-css', component: () => import('pages/SVGToCSS.vue') },
+      { path: '/corn-job-parser',name:'corn-job-parser', component: () => import('pages/CronParser.vue') },
+
 
       // { path: '/cURLToCode',name:'cURLToCode', component: () => import('pages/CurlToCode.vue') },
       // { path: '/texttopdf',name:'texttopdf', component: () => import('pages/TextToPDF.vue') },
