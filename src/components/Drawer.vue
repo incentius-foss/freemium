@@ -2,13 +2,17 @@
   <div class="tw-flex tw-flex-col tw-h-full">
     <div
       class="tw-shrink-0 tw-font-bold tw-text-2xl poppins tw-flex tw-gap-4 tw-p-4 tw-items-center tw-border-b tw-border-b-white/20">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 " viewBox="0 0 20 20">
-          <path fill="currentColor"
-                d="M2.02 1.515a.505.505 0 0 0-.505.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505V2.02a.505.505 0 0 0-.505-.506H2.02Zm5.05 9.394a2.02 2.02 0 0 1 2.02 2.02v5.05A2.02 2.02 0 0 1 7.07 20H2.02A2.02 2.02 0 0 1 0 17.98v-5.05a2.02 2.02 0 0 1 2.02-2.02h5.05Zm10.91 0A2.02 2.02 0 0 1 20 12.93v5.05A2.02 2.02 0 0 1 17.98 20h-5.05a2.02 2.02 0 0 1-2.02-2.02v-5.05a2.02 2.02 0 0 1 2.02-2.02h5.05ZM7.07 12.424H2.02a.505.505 0 0 0-.505.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505v-5.05a.505.505 0 0 0-.505-.506Zm10.91 0h-5.05a.505.505 0 0 0-.506.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505v-5.05a.505.505 0 0 0-.505-.506ZM7.07 0a2.02 2.02 0 0 1 2.02 2.02v5.05a2.02 2.02 0 0 1-2.02 2.02H2.02A2.02 2.02 0 0 1 0 7.07V2.02A2.02 2.02 0 0 1 2.02 0h5.05Zm10.91 0A2.02 2.02 0 0 1 20 2.02v5.05a2.02 2.02 0 0 1-2.02 2.02h-5.05a2.02 2.02 0 0 1-2.02-2.02V2.02A2.02 2.02 0 0 1 12.93 0h5.05Zm0 1.515h-5.05a.505.505 0 0 0-.506.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505V2.02a.505.505 0 0 0-.505-.506Z"/>
-        </svg>
-      </div>
-      <div>Freemium</div>
+<!--      <div>-->
+<!--        <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-6 tw-w-6 " viewBox="0 0 20 20">-->
+<!--          <path fill="currentColor"-->
+<!--                d="M2.02 1.515a.505.505 0 0 0-.505.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505V2.02a.505.505 0 0 0-.505-.506H2.02Zm5.05 9.394a2.02 2.02 0 0 1 2.02 2.02v5.05A2.02 2.02 0 0 1 7.07 20H2.02A2.02 2.02 0 0 1 0 17.98v-5.05a2.02 2.02 0 0 1 2.02-2.02h5.05Zm10.91 0A2.02 2.02 0 0 1 20 12.93v5.05A2.02 2.02 0 0 1 17.98 20h-5.05a2.02 2.02 0 0 1-2.02-2.02v-5.05a2.02 2.02 0 0 1 2.02-2.02h5.05ZM7.07 12.424H2.02a.505.505 0 0 0-.505.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505v-5.05a.505.505 0 0 0-.505-.506Zm10.91 0h-5.05a.505.505 0 0 0-.506.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505v-5.05a.505.505 0 0 0-.505-.506ZM7.07 0a2.02 2.02 0 0 1 2.02 2.02v5.05a2.02 2.02 0 0 1-2.02 2.02H2.02A2.02 2.02 0 0 1 0 7.07V2.02A2.02 2.02 0 0 1 2.02 0h5.05Zm10.91 0A2.02 2.02 0 0 1 20 2.02v5.05a2.02 2.02 0 0 1-2.02 2.02h-5.05a2.02 2.02 0 0 1-2.02-2.02V2.02A2.02 2.02 0 0 1 12.93 0h5.05Zm0 1.515h-5.05a.505.505 0 0 0-.506.505v5.05c0 .28.226.506.505.506h5.05a.505.505 0 0 0 .506-.505V2.02a.505.505 0 0 0-.505-.506Z"/>-->
+<!--        </svg>-->
+<!--      </div>-->
+<!--      <div>Freemium</div>-->
+<!--      logo1.png image-->
+<!--      <div>-->
+        <img src="Logo maker project 2.svg" alt="Freemium" class="tw-h-[50px] tw-mx-auto">
+<!--      </div>-->
     </div>
     <div class="tw-grow tw-flex tw-flex-col">
       <!--      <div class="tw-shrink-0 tw-p-4">-->
@@ -47,7 +51,10 @@
       <span class="tw-text-gray-400 tw-font-bold">Made with <i class="q-icon tw-text-red-500 notranslate material-icons"
                                                                aria-hidden="true" role="presentation"
                                                                style="font-size: 18px;">favorite</i> by <span
-        class="tw-bg-gradient-to-r tw-from-white tw-via-white/90 tw-to-white/80 tw-inline-block tw-text-transparent tw-bg-clip-text tw-cursor-pointer ">Incentius</span></span>
+        class="tw-bg-gradient-to-r tw-from-white tw-via-white/90 tw-to-white/80 tw-inline-block tw-text-transparent tw-bg-clip-text tw-cursor-pointer ">
+<!--        https://incentius.com/-->
+        <a href="https://incentius.com/" target="_blank" class="tw-text-transparent tw-bg-clip-text">Incentius</a>
+      </span></span>
     </div>
   </div>
 </template>
