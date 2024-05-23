@@ -1,5 +1,9 @@
 # Freemium
 
+
+### Note: This project is still under development
+
+
 Developer Toolbox is an all-in-one tool designed to assist developers with various tasks commonly encountered during development. It provides convenient features such as text style conversion, base64 encoding and decoding, URL encoding and decoding, QR code generation, image to base64 conversion, JSON formatting, JSON to CSV conversion, SQL formatting, and Excel to JSON conversion.
 
 ## Features
@@ -13,6 +17,13 @@ Developer Toolbox is an all-in-one tool designed to assist developers with vario
 - **JSON to CSV:** Convert JSON data to CSV format.
 - **SQL Formatter:** Format SQL queries for better readability and organization.
 - **Excel to JSON:** Convert Excel spreadsheets to JSON format.
+- **YAML to JSON:** Convert YAML data to JSON format.
+- **JSON to YAML:** Convert JSON data to YAML format.
+- **SVG to CSS:** Convert SVG images to CSS format.
+- **Cron job Parser:** Parse cron job expressions to understand the schedule.
+- **CSS Beautify/Minify:** Beautify or minify CSS code.
+- **JS Beautify/Minify:** Beautify or minify JavaScript code.
+- **XML Formatter:** Format XML data for better readability.
 
 ## Install the dependencies
 

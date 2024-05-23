@@ -26,6 +26,7 @@ const routes = [
       { path: '/corn-job-parser',name:'corn-job-parser', component: () => import('pages/CronParser.vue') },
       { path: '/css-beautify',name:'css-beautify', component: () => import('pages/CssBeautify.vue') },
       { path: '/js-beautify',name:'js-beautify', component: () => import('pages/JsBeautifyMinify.vue') },
+      { path: '/xml-beautify',name:'xml-beautify', component: () => import('pages/XMLBeautifyMinify.vue') },
 
 
       // { path: '/cURLToCode',name:'cURLToCode', component: () => import('pages/CurlToCode.vue') },
