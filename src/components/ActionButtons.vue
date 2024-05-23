@@ -14,9 +14,9 @@
            unelevated class="tw-rounded-lg tw-bg-white/10 tw-p-1">
       <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-7 tw-w-7" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M9.429 8.969h3.714v1.85c.535-1.064 1.907-2.02 3.968-2.02c3.951 0 4.889 2.118 4.889 6.004V22h-4v-6.312c0-2.213-.535-3.461-1.897-3.461c-1.889 0-2.674 1.345-2.674 3.46V22h-4V8.969ZM2.57 21.83h4V8.799h-4V21.83ZM7.143 4.55a2.53 2.53 0 0 1-.753 1.802a2.573 2.573 0 0 1-1.82.748a2.59 2.59 0 0 1-1.818-.747A2.548 2.548 0 0 1 2 4.55c0-.677.27-1.325.753-1.803A2.583 2.583 0 0 1 4.571 2c.682 0 1.336.269 1.819.747c.482.478.753 1.126.753 1.803Z" clip-rule="evenodd"/></svg>
     </q-btn>
-    <q-btn dense @click="shareURL" unelevated class="tw-rounded-lg tw-bg-white/10 tw-p-1">
-      <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-7 tw-w-7" viewBox="0 0 256 256"><path fill="currentColor" d="M176 156a43.78 43.78 0 0 0-29.09 11l-40.81-26.2a44.07 44.07 0 0 0 0-25.6L146.91 89a43.83 43.83 0 1 0-13-20.17L93.09 95a44 44 0 1 0 0 65.94l40.81 26.26A44 44 0 1 0 176 156Zm0-120a20 20 0 1 1-20 20a20 20 0 0 1 20-20ZM64 148a20 20 0 1 1 20-20a20 20 0 0 1-20 20Zm112 72a20 20 0 1 1 20-20a20 20 0 0 1-20 20Z"/></svg>
-    </q-btn>
+<!--    <q-btn dense @click="shareURL" unelevated class="tw-rounded-lg tw-bg-white/10 tw-p-1">-->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" class="tw-h-7 tw-w-7" viewBox="0 0 256 256"><path fill="currentColor" d="M176 156a43.78 43.78 0 0 0-29.09 11l-40.81-26.2a44.07 44.07 0 0 0 0-25.6L146.91 89a43.83 43.83 0 1 0-13-20.17L93.09 95a44 44 0 1 0 0 65.94l40.81 26.26A44 44 0 1 0 176 156Zm0-120a20 20 0 1 1-20 20a20 20 0 0 1 20-20ZM64 148a20 20 0 1 1 20-20a20 20 0 0 1-20 20Zm112 72a20 20 0 1 1 20-20a20 20 0 0 1-20 20Z"/></svg>-->
+<!--    </q-btn>-->
   </div>
 </template>
 
