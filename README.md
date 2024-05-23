@@ -65,3 +65,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 If you are seeking to leverage innovative technologies to create a custom application or transform your business
 processes, we invite you to reach out to Incentius. Discover how we can help you enable digital transformation and
 accelerate your business progress. For more information, visit us at [Incentius](https://www.incentius.com/).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
