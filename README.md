@@ -51,7 +51,7 @@ The interface follows Apple's Human Interface Guidelines (iOS 27 / Liquid Glass)
 
 **Generate:** UUID / ULID · Lorem Ipsum · QR Code (generate and read) · Hash Generator · Random String
 
-**Encode & Decode:** Base64 String · Base64 Image · URL Encode · HTML Entities · Backslash Escape · Certificate Decoder (X.509)
+**Encode & Decode:** Base64 String · Base64 Image · URL Encode · HTML Entities · Backslash Escape · Certificate Decoder & Validator (X.509: chain signatures, trusted root, hostname, private-key match)
 
 ### App features
 
@@ -116,6 +116,10 @@ src/
 2. Create `src/pages/tools/YourTool.vue`. For text in → text out, wrap `TransformTool` and pass a `transform(input, options)` function. Throw an `Error` to show a message inline.
 
 The route, sidebar entry, search result, and home tile are generated from the registry entry.
+
+## Third-party data
+
+The Certificate Validator ships Mozilla's trusted root store (`src/tools/data/cacert.pem`, from [curl's CA extract](https://curl.se/docs/caextract.html), MPL-2.0). To refresh it, run `curl -o src/tools/data/cacert.pem https://curl.se/ca/cacert.pem`.
 
 ## Contributing
 

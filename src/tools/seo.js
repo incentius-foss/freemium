@@ -46,7 +46,7 @@ const titles = {
   'url-encode': 'URL Encode & Decode Online',
   'html-entity': 'HTML Entity Encoder & Decoder',
   'backslash-escape': 'String Escape & Unescape Tool',
-  'certificate-decoder': 'SSL Certificate Decoder (X.509 PEM)',
+  'certificate-decoder': 'SSL Certificate Decoder & Validator (PEM)',
 }
 
 export function toolMeta (tool) {

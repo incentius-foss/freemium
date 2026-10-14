@@ -1,14 +1,41 @@
 <template>
   <ToolPage fill>
     <div class="split">
-      <CodePane
-        v-model="input"
-        label="Certificate (PEM)"
-        placeholder="-----BEGIN CERTIFICATE-----&#10;…&#10;-----END CERTIFICATE-----&#10;&#10;Paste one or more certificates, or drop a .pem / .crt / .der file."
-        accept="*/*"
-        :error="error"
-        @file="onFile"
-      />
+      <div class="inputs">
+        <CodePane
+          v-model="input"
+          class="inputs__cert"
+          label="Certificate (PEM)"
+          placeholder="-----BEGIN CERTIFICATE-----&#10;…&#10;-----END CERTIFICATE-----&#10;&#10;Paste the certificate and its chain, or drop a .pem / .crt / .der file."
+          accept="*/*"
+          :error="error"
+          @file="onFile"
+        />
+
+        <section class="card verify" aria-labelledby="verify-title">
+          <h2 id="verify-title" class="verify__title">Validate against</h2>
+          <label class="verify__field">
+            <span class="label">Hostname</span>
+            <input
+              v-model="hostname"
+              class="field t-mono"
+              type="text"
+              inputmode="url"
+              placeholder="api.example.com"
+              autocapitalize="off"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <CodePane
+            v-model="privateKey"
+            class="verify__key"
+            label="Private key (optional)"
+            placeholder="-----BEGIN PRIVATE KEY-----&#10;…&#10;&#10;Checked in this tab only. Never stored or uploaded."
+            accept=".key,.pem,text/plain"
+          />
+        </section>
+      </div>
 
       <section class="card result" aria-labelledby="cert-title">
         <header class="result__bar">
@@ -16,6 +43,26 @@
           <span v-if="certs.length > 1" class="t-caption t-secondary">{{ certs.length }} certificates</span>
         </header>
         <div class="result__scroll">
+          <section v-if="report" class="report" aria-labelledby="report-title" aria-live="polite">
+            <div class="report__head" :class="`report__head--${report.verdict}`">
+              <AppIcon :name="VERDICT[report.verdict].icon" :size="26" :weight="2" />
+              <div>
+                <h3 id="report-title" class="t-headline">{{ VERDICT[report.verdict].title }}</h3>
+                <p class="t-footnote t-secondary">{{ summary }}</p>
+              </div>
+            </div>
+            <ul class="checks" role="list">
+              <li v-for="c in report.checks" :key="c.id" class="check" :class="`check--${c.status}`">
+                <span class="check__icon"><AppIcon :name="STATUS[c.status].icon" :size="18" :weight="2.2" /></span>
+                <span class="check__text">
+                  <span class="check__title"><span class="sr-only">{{ STATUS[c.status].label }}: </span>{{ c.title }}</span>
+                  <span class="check__detail">{{ c.detail }}</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+          <p v-else-if="validating" class="report__loading t-footnote t-secondary">Validating…</p>
+
           <div v-if="!certs.length" class="empty">
             <AppIcon name="certificate" :size="44" :weight="1.4" />
             <p class="t-footnote t-secondary">Decoded fields appear here. Everything is parsed locally; nothing is uploaded.</p>
@@ -59,7 +106,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { computed, markRaw, onMounted, ref, shallowRef, watch } from 'vue'
 import {
   X509Certificate, X509Certificates, SubjectAlternativeNameExtension, KeyUsagesExtension,
   ExtendedKeyUsageExtension, BasicConstraintsExtension,
@@ -69,10 +116,59 @@ import CodePane from '@/components/CodePane.vue'
 import AppIcon from '@/components/AppIcon.vue'
 import { copyText } from '@/composables/clipboard'
 import { takeHandoff } from '@/composables/useHandoff'
+import { validate, parseRootStore } from '@/tools/certValidate'
 
 const input = ref('')
 const certs = ref([])
+// X509Certificate uses private #fields, which break behind Vue's reactive proxies; keep them raw.
+const parsed = shallowRef([])
 const error = ref('')
+const hostname = ref('')
+const privateKey = ref('') // deliberately never persisted
+const report = shallowRef(null)
+const validating = ref(false)
+
+const VERDICT = {
+  pass: { icon: 'checkCircle', title: 'Certificate is valid' },
+  warn: { icon: 'warning', title: 'Valid, with warnings' },
+  fail: { icon: 'xmark', title: 'Certificate is not valid' },
+}
+const STATUS = {
+  pass: { icon: 'checkCircle', label: 'Passed' },
+  warn: { icon: 'warning', label: 'Warning' },
+  fail: { icon: 'xmark', label: 'Failed' },
+  skip: { icon: 'minus', label: 'Not checked' },
+}
+const summary = computed(() => {
+  if (!report.value) return ''
+  const n = (s) => report.value.checks.filter((c) => c.status === s).length
+  return [`${n('pass')} passed`, n('warn') && `${n('warn')} ${n('warn') === 1 ? 'warning' : 'warnings'}`, n('fail') && `${n('fail')} failed`, n('skip') && `${n('skip')} not checked`].filter(Boolean).join(' · ')
+})
+
+// Mozilla's root store (~190 KB) loads only when there's something to validate.
+let rootStorePromise = null
+const loadRootStore = () => (rootStorePromise ||= import('@/tools/data/cacert.pem?raw').then((m) => parseRootStore(m.default)))
+
+let validateId = 0
+let validateTimer = null
+watch([parsed, hostname, privateKey], () => {
+  clearTimeout(validateTimer)
+  validateTimer = setTimeout(runValidation, 150)
+})
+async function runValidation () {
+  const id = ++validateId
+  if (!parsed.value.length) { report.value = null; validating.value = false; return }
+  validating.value = true
+  try {
+    const { roots, asOf } = await loadRootStore()
+    const result = await validate(parsed.value, { rootStore: roots, storeDate: asOf, hostname: hostname.value, privateKeyPem: privateKey.value })
+    if (id === validateId) report.value = markRaw(result)
+  } catch (e) {
+    if (id === validateId) report.value = { verdict: 'fail', checks: [{ id: 'error', status: 'fail', title: 'Validation failed', detail: e.message }] }
+  } finally {
+    if (id === validateId) validating.value = false
+  }
+}
 
 const KEY_USAGE = ['Digital Signature', 'Non-Repudiation', 'Key Encipherment', 'Data Encipherment', 'Key Agreement', 'Certificate Sign', 'CRL Sign', 'Encipher Only', 'Decipher Only']
 const EKU = {
@@ -183,15 +279,18 @@ function parse (text) {
 let runId = 0
 watch(input, async (text) => {
   const id = ++runId
-  if (!text.trim()) { certs.value = []; error.value = ''; return }
+  if (!text.trim()) { certs.value = []; parsed.value = []; error.value = ''; return }
   try {
-    const list = await Promise.all(parse(text).map(describe))
+    const raw = parse(text)
+    const list = await Promise.all(raw.map(describe))
     if (id !== runId) return
     certs.value = list
+    parsed.value = markRaw(raw.map(markRaw))
     error.value = ''
   } catch (e) {
     if (id !== runId) return
     certs.value = []
+    parsed.value = []
     error.value = /No certificate found/.test(e.message) ? e.message : `Couldn’t parse the certificate: ${e.message}`
   }
 })
@@ -214,6 +313,33 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.inputs { display: flex; flex-direction: column; gap: 16px; min-width: 0; min-height: 0; }
+.inputs__cert { flex: 1.4; }
+.verify { display: flex; flex-direction: column; gap: 12px; padding: 14px 10px 10px; min-height: 0; flex: 1; }
+.verify__title { padding: 0 6px; font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.015em; }
+.verify__field { padding: 0 6px; }
+.verify__key { flex: 1; min-height: 200px; box-shadow: inset 0 0 0 0.5px var(--separator); }
+.verify__key :deep(.pane__text) { min-height: 90px; }
+
+.report { padding: 4px 0 8px; }
+.report__head { display: flex; align-items: center; gap: 12px; margin: 0 12px 10px; padding: 12px 14px; border-radius: 16px; }
+.report__head--pass { background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--success-text); }
+.report__head--warn { background: color-mix(in srgb, var(--orange) 16%, transparent); color: var(--warning-text); }
+.report__head--fail { background: color-mix(in srgb, var(--red) 13%, transparent); color: var(--danger-text); }
+.report__head h3 { color: var(--label); }
+.report__loading { padding: 4px 16px 12px; }
+.checks { border-top: 0.5px solid var(--separator); border-bottom: 0.5px solid var(--separator); }
+.check { display: flex; gap: 10px; padding: 10px 16px; }
+.check + .check { box-shadow: inset 44px 0.5px 0 0 var(--bg-2), inset 0 0.5px 0 0 var(--separator); }
+.check__icon { flex: none; padding-top: 1px; }
+.check--pass .check__icon { color: var(--success-text); }
+.check--warn .check__icon { color: var(--warning-text); }
+.check--fail .check__icon { color: var(--danger-text); }
+.check--skip .check__icon { color: var(--label-3); }
+.check__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.check__title { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.015em; }
+.check--skip .check__title { color: var(--label-2); font-weight: 500; }
+.check__detail { font-size: 0.8125rem; line-height: 1.4; color: var(--label-2); overflow-wrap: anywhere; }
 .result { display: flex; flex-direction: column; min-height: 260px; min-width: 0; overflow: hidden; }
 .result__bar { display: flex; align-items: center; gap: 8px; min-height: 46px; padding: 8px 16px 6px; }
 .result__label { flex: 1; font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.015em; }

@@ -275,8 +275,8 @@ export const tools = [
     detect: (s) => (/\\[nrt"'\\]|\\u[0-9a-f]{4}/i.test(s) ? 0.55 : 0),
   },
   {
-    id: 'certificate-decoder', title: 'Certificate Decoder', subtitle: 'Inspect X.509 certificates (PEM).',
-    category: 'encode', icon: 'certificate', keywords: ['certificate', 'x509', 'ssl', 'tls', 'pem', 'crt'],
+    id: 'certificate-decoder', title: 'Certificate Decoder', subtitle: 'Inspect and validate X.509 certificates: chain, hostname and private key.',
+    category: 'encode', icon: 'certificate', keywords: ['certificate', 'x509', 'ssl', 'tls', 'pem', 'crt', 'validate', 'verify', 'chain', 'private key', 'checker'],
     component: () => import('@/pages/tools/CertificateDecoder.vue'),
     detect: (s) => (/-----BEGIN CERTIFICATE-----/.test(s) ? 1 : 0),
   },
