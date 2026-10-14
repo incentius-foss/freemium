@@ -2,10 +2,7 @@
   <router-view />
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'App'
-})
+<script setup>
+// Theme is applied on import so the first paint already has the saved appearance.
+import '@/composables/useTheme'
 </script>

@@ -1,40 +1,42 @@
 {
   "name": "freemium",
-  "version": "0.0.1",
-  "description": "A Quasar Project",
+  "version": "1.0.0",
+  "description": "Developer Toolbox \u2014 41 private, offline-first developer tools",
   "productName": "Freemium",
-  "author": "akashmelkeri-incentius <akash.melkeri@incentius.com>",
+  "author": "Incentius",
+  "type": "module",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build && node scripts/seo.js",
+    "postinstall": "quasar prepare",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.10",
-    "axios": "^0.21.1",
-    "cron-parser": "^4.9.0",
-    "js-beautify": "^1.15.1",
-    "js-yaml": "^4.1.0",
-    "json-2-csv": "^4.1.0",
-    "pinia": "^2.0.11",
+    "@peculiar/x509": "^1.14.3",
+    "cron-parser": "^5.10.2",
+    "crypto-js": "^4.2.0",
+    "diff": "^9.0.0",
+    "dompurify": "^3.4.17",
+    "js-beautify": "^2.0.3",
+    "js-yaml": "^5.4.3",
+    "json-2-csv": "^5.6.0",
+    "jsqr": "^1.4.0",
+    "marked": "^18.1.1",
     "qrious": "^4.0.2",
-    "quasar": "^2.15.1",
-    "sql-formatter": "^12.2.4",
+    "quasar": "^2.35.1",
+    "sql-formatter": "^15.9.0",
     "vkbeautify": "^0.99.3",
-    "vue": "^3.0.0",
-    "vue-i18n": "^9.0.0",
-    "vue-router": "^4.0.0",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "^3.3.1",
-    "@quasar/app-vite": "^1.8.0",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.3.3"
+    "@quasar/app-vite": "^3.10.2",
+    "sass-embedded": "^1.105.1"
   },
   "engines": {
-    "node": "^18 || ^16 || ^14.19",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "node": "^30 || ^28 || ^26 || ^24 || ^22.22.0",
+    "npm": ">= 10"
   }
 }

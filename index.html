@@ -1,48 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-<!--  <title><%= productName %></title>-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Freemium — Free Online Developer Tools (JSON, JWT, Base64, Regex…)</title>
+    <meta name="description" content="41 free developer tools: JSON formatter, JWT debugger, Base64, regex tester, diff checker, hash generator, UUID, cron parser and more. Private: everything runs in your browser.">
+    <link rel="canonical" href="https://freemium.incentius.com/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="application-name" content="Freemium">
+    <meta name="apple-mobile-web-app-title" content="Freemium">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- Zoom stays enabled (HIG › Accessibility: support text enlargement to 200%). viewport-fit=cover for safe areas. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 
-  <meta charset="utf-8">
-<!--  <meta name="description" content="<%= productDescription %>">-->
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport"
-        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
+    <link rel="icon" type="image/svg+xml" href="/icons/app-icon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/icons/favicon-128x128.png">
 
-  <link rel="icon" type="image/png" sizes="128x128" href="icons/Group 3.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="icons/Group 3.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/Group 3.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/Group 3.png">
-  <link rel="icon" type="image/ico" href="icons/Group 3.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@700&display=swap"
-        rel="stylesheet">
+    <!-- Apply the saved appearance before first paint to avoid a flash -->
+    <script>
+      try {
+        var t = JSON.parse(localStorage.getItem('freemium:theme'));
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    </script>
 
-  <title>Freemium</title>
-  <meta name="title" content="Freemium"/>
-  <meta name="description" content="Developer Toolbox is an all-in-one tool designed to assist developers with various tasks commonly encountered during development"/>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Freemium">
+    <meta property="og:url" content="https://freemium.incentius.com/">
+    <meta property="og:title" content="Freemium — Free Online Developer Tools (JSON, JWT, Base64, Regex…)">
+    <meta property="og:description" content="41 free developer tools that run entirely in your browser. Nothing you paste leaves your device.">
+    <meta property="og:image" content="https://freemium.incentius.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Freemium developer toolbox with a sidebar of tools and the JSON formatter open">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Freemium — Free Online Developer Tools (JSON, JWT, Base64, Regex…)">
+    <meta name="twitter:description" content="41 free developer tools that run entirely in your browser. Nothing you paste leaves your device.">
+    <meta name="twitter:image" content="https://freemium.incentius.com/og-image.png">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://freemium.incentius.com/convert-text-style"/>
-  <meta property="og:title" content="Freemium"/>
-  <meta property="og:description" content="Developer Toolbox is an all-in-one tool designed to assist developers with various tasks commonly encountered during development
-
-"/>
-  <meta property="og:image" content="https://freemium.incentius.com/Dashboard.png"/>
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:url" content="https://freemium.incentius.com/convert-text-style"/>
-  <meta property="twitter:title" content="Freemium"/>
-  <meta property="twitter:description" content="Developer Toolbox is an all-in-one tool designed to assist developers with various tasks commonly encountered during development
-
-"/>
-  <meta property="twitter:image" content="https://freemium.incentius.com/Dashboard.png"/>
-</head>
-<body>
-<!-- quasar:entry-point -->
-</body>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Freemium","url":"https://freemium.incentius.com/"}</script>
+  </head>
+  <body>
+    <!-- quasar:entry-point -->
+  </body>
 </html>
