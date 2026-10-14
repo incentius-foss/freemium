@@ -1,39 +1,57 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <div class="tw-brightness-75 fullscreen tw-absolute tw-top-0 tw-left-0 tw-z-0" style="background-image:url('/bg.jpg');background-size: cover;background-repeat: no-repeat;">
-      <!-- <div class="tw-h-96 tw-w-96 tw-bg-black/30 tw-border tw-border-t-white/40 tw-border-l-white/40 tw-border-r-white/50 tw-border-b-white/50 tw-rounded-2xl tw-backdrop-blur-lg"></div> -->
-    </div>
-    <q-drawer v-model="leftDrawerOpen" show-if-above class="tw-p-4" >
-      <Drawer class="glass-body tw-border-r tw-rounded-2xl glass-border" />
-    </q-drawer>
-    <q-page-container>
-      <router-view class="montserrat" />
-    </q-page-container>
-  </q-layout>
+  <div class="app" :class="{ 'app--sidebar': isRegular, 'app--mini': isMini() }">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <AppSidebar />
+    <transition name="fade">
+      <div v-if="!isRegular && sidebarOverlay" class="scrim" aria-hidden="true" @click="closeOverlay" />
+    </transition>
+
+    <main id="main" class="main" tabindex="-1">
+      <router-view v-slot="{ Component, route }">
+        <component :is="Component" :key="route.path" />
+      </router-view>
+    </main>
+
+    <CommandPalette />
+    <AppToasts />
+  </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue'
-import Drawer from 'src/components/Drawer.vue'
+<script setup>
+import { onBeforeUnmount, onMounted } from 'vue'
+import AppSidebar from '@/components/AppSidebar.vue'
+import CommandPalette from '@/components/CommandPalette.vue'
+import AppToasts from '@/components/AppToasts.vue'
+import { useLayout } from '@/composables/useLayout'
 
-export default defineComponent({
-  name: 'MainLayout',
-  components:{
-    Drawer
-  },
-  setup () {
-    return {
-      leftDrawerOpen:ref(false),
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      },
-    }
-  }
-})
-</script>
-<style>
-.q-drawer{
-  background: transparent !important;
+const { isRegular, isMini, sidebarOverlay, closeOverlay, paletteOpen, toggleSidebar } = useLayout()
+
+function onKey (e) {
+  const mod = e.metaKey || e.ctrlKey
+  if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); paletteOpen.value = !paletteOpen.value }
+  // ⌃⌘S mirrors the macOS "Show/Hide Sidebar" shortcut
+  else if (e.metaKey && e.ctrlKey && e.key.toLowerCase() === 's') { e.preventDefault(); toggleSidebar() }
+  else if (e.key === 'Escape' && sidebarOverlay.value) closeOverlay()
 }
+onMounted(() => window.addEventListener('keydown', onKey))
+onBeforeUnmount(() => window.removeEventListener('keydown', onKey))
+</script>
 
+<style scoped>
+.app { min-height: 100dvh; }
+/* Content extends under the floating sidebar's inset; text column starts after it. */
+.main {
+  min-width: 0;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  transition: padding-left 420ms var(--ease);
+}
+.main:focus { outline: none; }
+.app--sidebar .main { padding-left: calc(env(safe-area-inset-left) + var(--sidebar-w) + var(--inset)); }
+.app--mini .main { padding-left: calc(env(safe-area-inset-left) + var(--sidebar-mini-w) + var(--inset)); }
+
+.scrim { position: fixed; inset: 0; z-index: 30; background: rgba(0, 0, 0, 0.25); }
+.fade-enter-active, .fade-leave-active { transition: opacity 300ms ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>

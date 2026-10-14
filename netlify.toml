@@ -1,8 +1,13 @@
-[[redirects]]
-  from = '/*'
-  to = '/index.html'
-  status = 200
 [build]
   base = "/"
   publish = "dist/spa"
-  command = "quasar build"
+  command = "npm run build"
+
+[build.environment]
+  # @quasar/app-vite 3 (Vite 8) requires Node ^22.22 || >=24
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
